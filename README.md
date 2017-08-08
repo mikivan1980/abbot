@@ -21,7 +21,7 @@ Services.js
 
 ## constants.js
 Данная библиотека предназначена...
-
+`<js: console.log(9) />`
 
 ## elements_data.js
 Данная библиотека предназначена...

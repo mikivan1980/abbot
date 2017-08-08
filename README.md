@@ -30,8 +30,7 @@ Services.js
 
 `console.log(19);
 
-require('abcba');
-`
+require('abcba');`
 
 
 ## elements_data.js

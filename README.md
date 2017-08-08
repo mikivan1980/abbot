@@ -10,15 +10,15 @@ The Abbot - аббат, служитель в католической церк�
 Тестирование и эксплуатация Node.js - v6 и выше.
 
 ## Содержание [кладовая аббата]
-constants.js
-elements_data.js
-RWStream.js
-Field.js
-Data.js
-Message.js
-PDU.js
-Connection.js
-Services.js
+- constants.js
+- elements_data.js
+- RWStream.js
+- Field.js
+- Data.js
+- Message.js
+- PDU.js
+- Connection.js
+- Services.js
 
 
 ## constants.js
@@ -26,14 +26,15 @@ Services.js
 
 > **console.log(9);** - очень важная функция!!!
 
-`console.log(9);`
+`console.log(9);`<!-- комментарий !!!-->
 
 ```js
-console.log(19);
+console.log('it is good code !!!');
 
-console.log(23419);
+var F = require('./Field');
+var h = new F.HexField('3f');
 
-require('abcba');
+console.log('end.');
 ```
 
 

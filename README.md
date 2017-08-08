@@ -80,7 +80,7 @@ console.log('end.');
 
 1. [Node.js v6.11.2 Documentation](https://nodejs.org/dist/latest-v6.x/docs/api/documentation.html)
 2. [Стандарт DICOM (основной сайт)](http://dicom.nema.org/)
-3. [Хранилище версий стандарта](ftp://medical.nema.org/medical/Dicom)
+3. [Хранилище версий стандарта](http://ftp://medical.nema.org/medical/Dicom)
 4. [MARKDOWN SYNTAX](https://learn.getgrav.org/content/markdown)
 
 КОНЕЦ.

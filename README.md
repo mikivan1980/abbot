@@ -23,8 +23,10 @@ Services.js
 
 ## constants.js
 Данная библиотека предназначена...
+
 `
-console.log(9)
+console.log(9);
+require('abcba');
 `
 
 ## elements_data.js

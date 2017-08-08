@@ -28,11 +28,13 @@ Services.js
 
 `console.log(9);`
 
-``<console.log(19);
+```js
+console.log(19);
 
 console.log(23419);
 
-require('abcba');>``
+require('abcba');
+```
 
 
 ## elements_data.js

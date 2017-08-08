@@ -24,11 +24,13 @@ Services.js
 ## constants.js
 Данная библиотека предназначена...
 
-**console.log(9);** - очень важная функция!!!
+> **console.log(9);** - очень важная функция!!!
 
 `console.log(9);`
 
-`require('abcba');`
+`console.log(19);
+
+require('abcba');`
 
 
 ## elements_data.js

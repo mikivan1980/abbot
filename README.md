@@ -26,7 +26,7 @@ Services.js
 
 **console.log(9);** - очень важная функция!!!
 
-`console.log(9);``
+`console.log(9);`
 
 `require('abcba');`
 

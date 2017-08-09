@@ -4,12 +4,6 @@
 //Подключаем модуль constants.js
 var C = require('./constants');
 
-// // //Псмотрим что в нем:
-// // console.log(C);
-// //Пример применения RWStream.js, строки 10 - 26: function calcLength(type, value) {
-// //Давайте посмотрим на этот кусочек кода:
-// require('./_tools').showCode('RWStream.js', 10, 26);
-
 
 //------------------------------------------------------------------------------
 //Подключаем следующий модуль elements_data.js - словарь dicom, том 6

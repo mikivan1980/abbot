@@ -75,7 +75,15 @@ console.log( calcLength(C.TYPE_INT8) );
 
 
 ## elements_data.js
-Модуль реализует словарь данных, позволяет определить название, назначение и типы атрибутов
+Модуль реализует словарь данных стандарта DICOM PS3.6 - Data Dictionary.
+
+Определения:
+
+Attribute - A property of an Information Object. An Attribute has a name and a
+            value that are independent of any encoding scheme.
+
+
+позволяет определить название, назначение и типы атрибутов
 определенных протоколом DICOM. Стремиться повторить том 6 стандарта.
 
 Данная библиотека предназначена...

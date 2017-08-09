@@ -66,7 +66,7 @@ function calcLength(type, value) {
 
 // выбора значения мульти - константы на этапе исполнения
 console.log( calcLength(C.TYPE_INT8) );
-// command prompt /> 1
+// command prompt/> 1
 ```
 
 Подключение в других модулях:
@@ -126,7 +126,7 @@ console.log('end.');
 1. [Node.js v6.11.2 Documentation](https://nodejs.org/dist/latest-v6.x/docs/api/documentation.html)
 2. [Стандарт DICOM (основной сайт)](http://dicom.nema.org/)
 3. [Текущая версия](http://dicom.nema.org/medical/dicom/current/)
-4. [Хранилище версий стандарта](http://ftp%3A//medical.nema.org/medical/Dicom)
+4. [Хранилище версий стандарта](http:// ftp %3A//medical.nema.org/medical/Dicom)
 5. [MARKDOWN SYNTAX](https://learn.getgrav.org/content/markdown)
 
 КОНЕЦ.

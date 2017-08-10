@@ -13,16 +13,18 @@ The Abbot - аббат, служитель в католической церк�
 
 Тестирование и эксплуатация на [Node.js](https://nodejs.org/en/download/) - v6 и выше.
 
+
+<a id="content"></a>
 ## Содержание [кладовая аббата]
 - [constants.js](#constants)
-- elements_data.js
-- RWStream.js
-- Field.js
-- Data.js
-- Message.js
-- PDU.js
-- Connection.js
-- Services.js
+- [elements_data.js](#element)
+- [RWStream.js](#rwstream)
+- [Field.js](#field)
+- [Data.js](#data)
+- [Message.js](#message)
+- [PDU.js](#pdu)
+- [Connection.js](#connection)
+- [Services.js](#services)
 
 
 <a id="constants"></a>
@@ -73,8 +75,10 @@ console.log( calcLength(C.TYPE_INT8) );
 Подключение в других модулях:
 > **var C = require('./constants');**  - важно, расширение не указано! <!-- комментарий не видно!!!-->
 
+[Вернуться к содержанию.](#content)
 
 
+<a id="elements"></a>
 ## elements_data.js
 Модуль реализует словарь данных стандарта DICOM PS3.6 - Data Dictionary.
 
@@ -89,12 +93,16 @@ Attribute - A property of an Information Object. An Attribute has a name and a
 
 Данная библиотека предназначена...
 
+[Вернуться к содержанию.](#content)
 
+
+<a id="rwstream"></a>
 ## RWStream.js
 Модуль управления потоками чтения и записи данных (файловый, сетевой) в raw Buffer.
 Данная библиотека предназначена...
 
 
+<a id="field"></a>
 ## Field.js
 Данная библиотека предназначена...
 
@@ -113,22 +121,27 @@ var h = new F.HexField('3f');
 console.log('end.');
 ```
 
+
+<a id="data"></a>
 ## Data.js
 Данная библиотека предназначена...
 
 
+<a id="message"></a>
 ## Message.js
 Данная библиотека предназначена...
 
 
+<a id="pdu"></a>
 ## PDU.js
 Данная библиотека предназначена...
 
 
+<a id="connection"></a>
 ## Connection.js
 Данная библиотека предназначена...
 
-
+<a id="services"></a>
 ## Services.js
 Данная библиотека предназначена...
 

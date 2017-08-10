@@ -81,22 +81,48 @@ console.log( calcLength(C.TYPE_INT8) );
 <a id="elements"></a>
 ## elements_data.js
 Модуль реализует словарь данных стандарта DICOM 3.0, часть PS3.6 - Data Dictionary,
-содержит реестр всех DICOM [Data Element] и всех уникальных идентификаторов [UID] DICOM,
-которые определены в стандарте DICOM. Упорядоченное множество [Data Set] элементов данных
+содержит реестр всех DICOM элементов данных [Data Element] и всех уникальных идентификаторов [UID] DICOM,
+которые определены в стандарте DICOM. Правильно структурированное множество [Data Set] элементов данных
 составляет объект DICOM.
 
-Элемент данных [Data Element] представляет логическую единицу описания - атрибут,
-предназначенные для представления информации об объектах модели реального мира DICOM.
+Элемент данных [Data Element] представляет логическую единицу описания атрибута,
+представлен единственной записью в словаре данных.
+
+Атрибут - это свойство информационного объекта в модели реального мира DICOM.
 
 
-Определения:
+Определения терминов в стандарте:
 
-Attribute - A property of an Information Object. An Attribute has a name and a
-            value that are independent of any encoding scheme.
+__[Data Element]__: A unit of information as defined by a single entry in the data dictionary. An encoded Information Object Definition (IOD) Attribute that is composed of, at a minimum, three fields: a Data Element Tag, a Value Length, and a Value Field. For some specific Transfer Syntaxes, a Data Element also contains a VR Field where the Value Representation of that Data Element is specified explicitly.
+
+__[Data Set]__: Exchanged information consisting of a structured set of Attribute values directly or indirectly related to Information Objects. The value of each Attribute in a Data Set is expressed as a Data Element. A collection of Data Elements ordered by increasing Data Element Tag number that is an encoding of the values of Attributes of a real world object
+
+__[Attribute]__: A property of an Information Object. An Attribute has a name and a value
+that are independent of any encoding scheme.
+
+дополнительные определения см. DICOM PS3.5 2017b2017c - Data Structures and Encoding,
+раздел: 3.10 DICOM Data Structures and Encoding Definitions, стр. 22-23.
+
+![data_structures](https://github.com/mikivan1980/abbot/blob/master/img/DICOM_Data_Set_and_Data_Element_Structures.png)
 
 
-позволяет определить название, назначение и типы атрибутов
-определенных протоколом DICOM. Стремиться повторить том 6 стандарта.
+Необходимо стремиться повторить шестой том стандарта при реализации приложений и библиотек предназначенных для работы с
+данными в стандарте DICOM.
+
+
+```js
+// Пример реализации записей словаря в модуле
+var dicomNDict = {...
+0x0008001B : { vr : "UI", vm : C.VM_SINGLE, keyword : "OriginalSpecializedSOPClassUID"},
+0x00080020 : { vr : "DA", vm : C.VM_SINGLE, keyword : "StudyDate"},
+0x00080021 : { vr : "DA", vm : C.VM_SINGLE, keyword : "SeriesDate"},
+0x00080022 : { vr : "DA", vm : C.VM_SINGLE, keyword : "AcquisitionDate"},
+...}
+
+// Доступ к
+
+//-command prompt/>
+```
 
 Данная библиотека предназначена...
 

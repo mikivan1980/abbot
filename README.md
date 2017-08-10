@@ -130,10 +130,10 @@ var dicomVDict = {...
 
 // Доступ к словарю dicomNDict
 var el = require('./elements_data');
-console.log(el.dicomNDict["7Fxx0040"]);
-//-command prompt/> { vr: 'OW', vm: 1, keyword: 'VariableCoefficientsSDDN' }
+console.log(el.dicomNDict[0x00080020]);
+//-command prompt/> { vr: 'DA', vm: 1, keyword: 'StudyDate' }
 console.log(el.dicomVDict["002808x4"]);
-
+//-command prompt/> { vr: 'US', vm: 1, keyword: 'BitsForCodeWord' }
 ```
 
 Данная библиотека предназначена...

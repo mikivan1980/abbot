@@ -14,7 +14,7 @@ The Abbot - аббат, служитель в католической церк�
 Тестирование и эксплуатация на [Node.js](https://nodejs.org/en/download/) - v6 и выше.
 
 ## Содержание [кладовая аббата]
-- constants.js
+- [constants.js](#constants)
 - elements_data.js
 - RWStream.js
 - Field.js
@@ -25,7 +25,7 @@ The Abbot - аббат, служитель в католической церк�
 - Services.js
 
 
-## constants.js
+## constants.js <a id="constants"></a>
 Модуль групп мульти - констант, определение (выбор) значения на этапе исполнения с помощью __switch__
 реализуется выполнением соответствующего кода в __case__. Представляет однотипное ветвление по значению.
 
@@ -97,6 +97,10 @@ Attribute - A property of an Information Object. An Attribute has a name and a
 ## Field.js
 Данная библиотека предназначена...
 
+
+![data_structures](https://github.com/mikivan1980/abbot/img/DICOM_Data_Set_and_Data_Element_Structures.png)
+
+
 `console.log(9);`<!-- комментарий !!!-->
 
 ```js
@@ -134,7 +138,7 @@ console.log('end.');
 1. [Node.js v6.11.2 Documentation](https://nodejs.org/dist/latest-v6.x/docs/api/documentation.html)
 2. [Стандарт DICOM (основной сайт)](http://dicom.nema.org/)
 3. [Текущая версия](http://dicom.nema.org/medical/dicom/current/)
-4. [Хранилище версий стандарта (ftp)](http://medical.nema.org/medical/Dicom)
+4. [Архив версий стандарта (ftp://medical.nema.org/medical/Dicom)]()
 5. [MARKDOWN SYNTAX](https://learn.getgrav.org/content/markdown)
 
 КОНЕЦ.

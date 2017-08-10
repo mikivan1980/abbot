@@ -25,7 +25,8 @@ The Abbot - аббат, служитель в католической церк�
 - Services.js
 
 
-## constants.js <a id="constants"></a>
+<a id="constants"></a>
+## constants.js
 Модуль групп мульти - констант, определение (выбор) значения на этапе исполнения с помощью __switch__
 реализуется выполнением соответствующего кода в __case__. Представляет однотипное ветвление по значению.
 
@@ -98,7 +99,7 @@ Attribute - A property of an Information Object. An Attribute has a name and a
 Данная библиотека предназначена...
 
 
-![data_structures](https://github.com/mikivan1980/abbot/img/DICOM_Data_Set_and_Data_Element_Structures.png)
+![data_structures](https://github.com/mikivan1980/abbot/blob/master/img/DICOM_Data_Set_and_Data_Element_Structures.png)
 
 
 `console.log(9);`<!-- комментарий !!!-->

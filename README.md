@@ -109,6 +109,7 @@ that are independent of any encoding scheme.
 Необходимо стремиться повторить шестой том стандарта при реализации приложений и библиотек предназначенных для работы с
 данными в стандарте DICOM.
 
+Словарные записи стандарта разделены в модуле на два типа словарных записей: __dicomNDict__, __dicomVDict__.
 
 ```js
 // Пример реализации записей словаря в модуле
@@ -119,10 +120,20 @@ var dicomNDict = {...
 0x00080022 : { vr : "DA", vm : C.VM_SINGLE, keyword : "AcquisitionDate"},
 ...}
 
-// Доступ к
+
+var dicomVDict = {...
+"002808x4" : { vr : "US", vm : C.VM_SINGLE, keyword : "BitsForCodeWord"},
+"002808x8" : { vr : "AT", vm : C.VM_1N, keyword : "ImageDataLocation"},
+"1000xxx0" : { vr : "US", vm : C.VM_THREE, keyword : "EscapeTriplet"},
+"1000xxx1" : { vr : "US", vm : C.VM_THREE, keyword : "RunLengthTriplet"},
+...}
+
+// Доступ к словарю dicomNDict
 var el = require('./elements_data');
 console.log(el.dicomNDict["7Fxx0040"]);
-//-command prompt/>
+//-command prompt/> { vr: 'OW', vm: 1, keyword: 'VariableCoefficientsSDDN' }
+console.log(el.dicomVDict["002808x4"]);
+
 ```
 
 Данная библиотека предназначена...

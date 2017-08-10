@@ -10,7 +10,7 @@ var C = require('./constants');
 var El = require('./elements_data');
 console.log(El.dicomNDict["7Fxx0040"]);
 
-
+console.log(El.dicomVDict['002808x4']);
 
 //поиграем с типами данными машины и их представлении в буфере для диком
 var RW = require('./RWStream');

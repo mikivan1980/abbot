@@ -3613,4 +3613,4 @@ var dicomVDict = {
 //exports.dicomVDict = dicomVDict;
 //console.log(C);
 module.exports.dicomNDict = dicomNDict;
-module.exports.dicomNDict = dicomVDict;
+module.exports.dicomVDict = dicomVDict;

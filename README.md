@@ -100,7 +100,7 @@ __[Data Set]__: Exchanged information consisting of a structured set of Attribut
 __[Attribute]__: A property of an Information Object. An Attribute has a name and a value
 that are independent of any encoding scheme.
 
-дополнительные определения см. DICOM PS3.5 2017b2017c - Data Structures and Encoding,
+дополнительные определения см. DICOM PS3.5 2017c - Data Structures and Encoding,
 раздел: 3.10 DICOM Data Structures and Encoding Definitions, стр. 22-23.
 
 ![data_structures](https://github.com/mikivan1980/abbot/blob/master/img/DICOM_Data_Set_and_Data_Element_Structures.png)
@@ -120,7 +120,8 @@ var dicomNDict = {...
 ...}
 
 // Доступ к
-
+var el = require('./elements_data');
+console.log(el.dicomNDict["7Fxx0040"]);
 //-command prompt/>
 ```
 
@@ -140,7 +141,6 @@ var dicomNDict = {...
 Данная библиотека предназначена...
 
 
-![data_structures](https://github.com/mikivan1980/abbot/blob/master/img/DICOM_Data_Set_and_Data_Element_Structures.png)
 
 
 `console.log(9);`<!-- комментарий !!!-->

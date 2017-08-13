@@ -234,6 +234,45 @@ class ReadStream extends RWStream
 
 ```
 
+
+```js
+class RWStream {
+  
+  constructor() {
+    this.endian = C.BIG_ENDIAN;
+  }
+
+  setEndian(endian){...}
+  getEncoding(type){...}
+  getWriteType(type){...}
+  getReadType(type){...}
+}
+```
+
+
+```js
+class WriteStream extends RWStream {
+
+  constructor() {
+    super();
+    this.defaultBufferSize = 512; //512 bytes
+    this.rawBuffer = new Buffer(this.defaultBufferSize);
+    this.offset = 0;
+    this.contentSize = 0;
+  }
+
+  increment(add){...}
+  size(){...}
+  skip(amount){...}
+  checkSize(length){...}
+  writeToBuffer(type, value, length){...}
+  write(type, value){...}
+  writeString(string, type){...}
+  buffer(){...}
+  concat(newStream){...}
+}
+```
+
 ```js
 class RWStream
 RWStream.setEndian(endian)  --

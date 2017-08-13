@@ -131,17 +131,22 @@ var dicomVDict = {...
 ...}
 ```
 
-> Наш тестовый скрипт для демонстрации применения библиотеки -  our_test.js
+> Наш тестовый скрипт для демонстрации применения библиотеки -  our_test.js,
+> ни один такой файл не присутствует в репозитории GitHub
+
 ```js
-// Доступ к словарю
+// our_test.js
 var el = require('./elements_data');
+
 console.log(el.dicomNDict[0x00080020]);
-//-command prompt/> { vr: 'DA', vm: 1, keyword: 'StudyDate' }
 console.log(el.dicomVDict["002808x4"]);
+
+
+// Вывод:
+//-command prompt/> { vr: 'DA', vm: 1, keyword: 'StudyDate' }
 //-command prompt/> { vr: 'US', vm: 1, keyword: 'BitsForCodeWord' }
 ```
 
-Данная библиотека предназначена...
 
 [Вернуться к содержанию.](#content)
 

@@ -156,7 +156,39 @@ console.log(el.dicomVDict["002808x4"]);
 ## RWStream.js
 Модуль позволяет создавать два типа объектов - объект поток чтения **ReadStream** и объект поток записи **WriteStream**.
 Экземпляры предназначены для работы с потоками чтения и записи данных через необработанный буфер **rawBuffer**.
+Самостоятельное использование не предполагается, но возможно.
+Экземпляр выступает в качестве аргумента методов чтения или записи объектов представляющих структуры и типы данных стандарта DICOM.
 
+При создании экземпляра поток чтения или поток записи вызывается конструктор без параметров, создается необработанный буфер
+размером 512 байт, с обратным порядком байт записи типизированных значений переменных в буфер.
+Порядок записи байт можно изменять с помощью метода **setEndian(endian)**.
+
+<!-- "обратный порядок байтов" – по-английски –"big-endian".
+//"прямой порядок байтов", или по-английски "litle-endian". -->
+
+```js
+// our_test.js
+var C = require('./constants');
+var RW = require('./RWStream');
+
+var stream = new RW.WriteStream();
+var num = 23423525;
+
+console.log(stream.getWriteType(C.TYPE_UINT32));
+stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
+
+stream.setEndian(C.LITTLE_ENDIAN);
+
+console.log(stream.getWriteType(C.TYPE_UINT32));
+stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
+
+
+// Вывод:
+//-command prompt/> writeUInt32BE
+//-command prompt/> <Buffer 01 65 6a 25 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ... >
+//-command prompt/> writeUInt32LE
+//-command prompt/> <Buffer 01 65 6a 25 25 6a 65 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ... >
+```
 
 
 Раздел в разработке...

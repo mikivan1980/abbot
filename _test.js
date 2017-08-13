@@ -15,13 +15,27 @@ console.log(El.dicomVDict["002808x4"]);
 // //поиграем с типами данными машины и их представлении в буфере для диком
 var RW = require('./RWStream');
 
-var RWobject = new RW.RWStream();
+var stream = new RW.WriteStream();
+var num = 23423525;
 
-console.log(RWobject.getWriteType(C.TYPE_UINT16));
+console.log(stream.getWriteType(C.TYPE_UINT32));
+stream.write( C.TYPE_UINT32, num);
+console.log(stream.rawBuffer);
 
-RWobject.setEndian(C.LITTLE_ENDIAN);
+stream.setEndian(C.LITTLE_ENDIAN);
 
-console.log(RWobject.getWriteType(C.TYPE_UINT16));
+console.log(stream.getWriteType(C.TYPE_UINT32));
+stream.write( C.TYPE_UINT32, num);
+console.log(stream.rawBuffer);
+
+
+// var RWobject = new RW.RWStream();
+//
+// console.log(RWobject.getWriteType(C.TYPE_UINT16));
+//
+// RWobject.setEndian(C.LITTLE_ENDIAN);
+//
+// console.log(RWobject.getWriteType(C.TYPE_UINT16));
 
 //console.log(RW.RWStream);
 

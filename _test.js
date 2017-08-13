@@ -13,13 +13,24 @@ console.log(El.dicomNDict[0x00080020]);
 console.log(El.dicomVDict["002808x4"]);
 
 // //поиграем с типами данными машины и их представлении в буфере для диком
-// var RW = require('./RWStream');
+var RW = require('./RWStream');
+
+var RWobject = new RW.RWStream();
+
+console.log(RWobject.getWriteType(C.TYPE_UINT16));
+
+RWobject.setEndian(C.LITTLE_ENDIAN);
+
+console.log(RWobject.getWriteType(C.TYPE_UINT16));
+
+//console.log(RW.RWStream);
+
 // var F = require('./Field');
 //
 //
-// var stream_to_write = new RW.WriteStream();
+//var stream_to_write = new RW.WriteStream();
 //
-// console.log('length buffer of stream_to_write: ' + stream_to_write.defaultBufferSize + '\n');
+//console.log('length buffer of stream_to_write: ' + stream_to_write.defaultBufferSize + '\n');
 //
 // console.log(stream_to_write.rawBuffer);
 //

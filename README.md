@@ -197,7 +197,22 @@ class RWStream
 RWStream.setEndian(endian)
 RWStream.getEncoding(type)
 RWStream.getWriteType(type)
-RWStream.getReadType(type) 
+RWStream.getReadType(type)
+
+```
+
+
+```js
+class WriteStream extends RWStream
+WriteStream.increment(add)
+WriteStream.size()
+WriteStream.skip(amount)
+WriteStream.checkSize(length)
+WriteStream.writeToBuffer(type, value, length)
+WriteStream.write(type, value)
+WriteStream.writeString(string, type)
+WriteStream.buffer()   
+WriteStream.concat(newStream)
 
 ```
 

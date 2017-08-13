@@ -190,6 +190,23 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 //-command prompt/> <Buffer 01 65 6a 25 25 6a 65 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ... >
 ```
 
+Описание полей и методов:
+
+```js
+class RWStream
+RWStream.setEndian(endian)  -- /* установка прямого или обратного порядка следования байт в буфере,
+значение endian -- BIG_ENDIAN или LITTLE_ENDIAN*/
+
+RWStream.getEncoding(type)  -- /* определить тип кодировки для последовательности байт в буфере,
+значение type -- TYPE_HEX или TYPE_ASCII*/
+
+RWStream.getWriteType(type) -- /*определить значение type представления данных в буфере для записи*/
+
+RWStream.getReadType(type)  -- /*определить значение type представления данных в буфере для чтения*/
+
+
+```
+
 
 Раздел в разработке...
 

@@ -194,25 +194,43 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 
 ```js
 class RWStream
-RWStream.setEndian(endian)
-RWStream.getEncoding(type)
-RWStream.getWriteType(type)
-RWStream.getReadType(type)
+
+      RWStream.setEndian(endian)
+      RWStream.getEncoding(type)
+      RWStream.getWriteType(type)
+      RWStream.getReadType(type)
 
 ```
 
 
 ```js
 class WriteStream extends RWStream
-WriteStream.increment(add)
-WriteStream.size()
-WriteStream.skip(amount)
-WriteStream.checkSize(length)
-WriteStream.writeToBuffer(type, value, length)
-WriteStream.write(type, value)
-WriteStream.writeString(string, type)
-WriteStream.buffer()   
-WriteStream.concat(newStream)
+
+      WriteStream.increment(add)
+      WriteStream.size()
+      WriteStream.skip(amount)
+      WriteStream.checkSize(length)
+      WriteStream.writeToBuffer(type, value, length)
+      WriteStream.write(type, value)
+      WriteStream.writeString(string, type)
+      WriteStream.buffer()   
+      WriteStream.concat(newStream)
+
+```
+
+
+```js
+class ReadStream extends RWStream
+
+      ReadStream.increment(add)
+      ReadStream.more(length)
+      ReadStream.reset()
+      ReadStream.end()
+      ReadStream.readFromBuffer(type, length)
+      ReadStream.read(type, length)
+      ReadStream.readString(length, type)
+      ReadStream.buffer()   
+      ReadStream.concat(newStream)
 
 ```
 

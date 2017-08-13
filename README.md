@@ -194,6 +194,15 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 
 ```js
 class RWStream
+RWStream.setEndian(endian)
+RWStream.getEncoding(type)
+RWStream.getWriteType(type)
+RWStream.getReadType(type) 
+
+```
+
+```js
+class RWStream
 RWStream.setEndian(endian)  --
 установка прямого или обратного порядка следования байт в буфере, значение endian -- BIG_ENDIAN или LITTLE_ENDIAN
 
@@ -208,7 +217,7 @@ RWStream.getReadType(type)  -- /*определить значение type пр
 ```
 
 | Метод | Опиание |
-| ------------ | ----------------------- |
+|---------------------| ----------------------- |
 | setEndian(endian)  | установка прямого или обратного порядка следования байт в буфере, значение endian -- BIG_ENDIAN или LITTLE_ENDIAN |
 | getEncoding(type) |  определить тип кодировки для последовательности байт в буфере, значение type -- TYPE_HEX или TYPE_ASCI |
 | ext    | extension to be used for dest files. |

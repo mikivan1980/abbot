@@ -222,7 +222,11 @@ RWStream.getReadType(type)  -- /*определить значение type пр
   </thead>
   <tbody>
     <tr>
-      <td>```js RWStream.setEndian(endian)```</td>
+      <td>
+      ```js
+      RWStream.setEndian(endian)
+      ```
+      </td>
       <td>path to data files to supply the data that will be passed into templates.</td>
     </tr>
     <tr>

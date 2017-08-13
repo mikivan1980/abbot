@@ -209,10 +209,8 @@ RWStream.getReadType(type)  -- /*определить значение type пр
 
 | Метод | Опиание |
 | ------ | ----------- |
-| RWStream.setEndian(endian)  | установка прямого или обратного порядка следования байт в буфере,
-значение endian -- BIG_ENDIAN или LITTLE_ENDIAN |
-| RWStream.getEncoding(type) |  определить тип кодировки для последовательности байт в буфере,
-значение type -- TYPE_HEX или TYPE_ASCI |
+| setEndian(endian)  | установка прямого или обратного порядка следования байт в буфере, значение endian -- BIG_ENDIAN или LITTLE_ENDIAN |
+| getEncoding(type) |  определить тип кодировки для последовательности байт в буфере, значение type -- TYPE_HEX или TYPE_ASCI |
 | ext    | extension to be used for dest files. |
 
 

@@ -207,38 +207,15 @@ RWStream.getReadType(type)  -- /*определить значение type пр
 
 ```
 
-| Option | Description |
+| Метод | Опиание |
 | ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
+| RWStream.setEndian(endian)  | установка прямого или обратного порядка следования байт в буфере,
+значение endian -- BIG_ENDIAN или LITTLE_ENDIAN |
+| RWStream.getEncoding(type) |  определить тип кодировки для последовательности байт в буфере,
+значение type -- TYPE_HEX или TYPE_ASCI |
 | ext    | extension to be used for dest files. |
 
-<table>
-  <thead>
-    <tr>
-      <th>Option</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-      ```js
-      RWStream.setEndian(endian)
-      ```
-      </td>
-      <td>path to data files to supply the data that will be passed into templates.</td>
-    </tr>
-    <tr>
-      <td>engine</td>
-      <td>engine to be used for processing templates. Handlebars is the default.</td>
-    </tr>
-    <tr>
-      <td>ext</td>
-      <td>extension to be used for dest files.</td>
-    </tr>
-  </tbody>
-</table>
+
 
 
 

@@ -91,6 +91,8 @@ console.log( calcLength(C.TYPE_INT8) ); // выбора значения мул�
 // -command prompt/> 1
 ```
 
+[Документация](https://github.com/mikivan1980/abbot/blob/master/docs/documentation.md)
+
 [Вернуться к содержанию.](#content)
 
 

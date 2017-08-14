@@ -262,15 +262,6 @@ TYPE_INT8, TYPE_INT16, TYPE_INT32.
 
 
 
-| Метод | Опиание |
-|---------------------| ----------------------- |
-| setEndian(endian)  | установка прямого или обратного порядка следования байт в буфере, значение endian -- BIG_ENDIAN или LITTLE_ENDIAN |
-| getEncoding(type) |  определить тип кодировки для последовательности байт в буфере, значение type -- TYPE_HEX или TYPE_ASCI |
-| ext    | extension to be used for dest files. |
-
-
-
-
 
 Раздел в разработке...
 
@@ -467,5 +458,17 @@ class MaximumLengthItem             extends Item
 3. [Текущая версия](http://dicom.nema.org/medical/dicom/current/)
 4. Архив версий стандарта (ftp://medical.nema.org/medical/Dicom)
 5. [MARKDOWN SYNTAX](https://learn.getgrav.org/content/markdown)
+
+
+### Подвал аббата.
+
+| Метод | Опиание |
+|-----------------------------------| ----------------------- |
+| Начало разработки:                | 9 августа 2017 года |
+| Последние обновление:             | 14 августа 2017 года |
+| План сбора урожая:                |  21 августа 2017 года  |
+| Протестировано на файлах DICOM    | 0 шт.  |
+
+
 
 КОНЕЦ.

@@ -13,6 +13,14 @@ The Abbot - аббат, служитель в католической церк�
 
 Тестирование и эксплуатация на [Node.js](https://nodejs.org/en/download/) - v6 и выше.
 
+Скрипы для демонстрации применения библиотеки имеют общее название - our_test.js, приведены по ходу описания библиотеки
+и ни один такой скрипт не присутствует в репозитории GitHub.
+
+Для запуска our_test.js, перейдите в директорию модулей библиотеки создайте тестовый скрипт и запустите:
+
+> node our_test.js
+
+
 
 <a id="content"></a>
 ## Содержание [кладовая аббата]
@@ -66,14 +74,17 @@ function calcLength(type, value) {
   }
   return size;
 }
-
-// выбора значения мульти - константы на этапе исполнения
-console.log( calcLength(C.TYPE_INT8) );
-// command prompt/> 1
 ```
 
-Подключение в других модулях:
-> **var C = require('./constants');**  - важно, расширение не указано! <!-- комментарий не видно!!!-->
+```js
+// our_test.js
+var C = require('./constants');          //Подключение модуля
+console.log( calcLength(C.TYPE_INT8) ); // выбора значения мульти - константы на этапе исполнения
+
+
+// Вывод:
+// -command prompt/> 1
+```
 
 [Вернуться к содержанию.](#content)
 
@@ -131,8 +142,6 @@ var dicomVDict = {...
 ...}
 ```
 
-> Наш тестовый скрипт для демонстрации применения библиотеки -  our_test.js,
-> ни один такой файл не присутствует в репозитории GitHub
 
 ```js
 // our_test.js
@@ -192,52 +201,10 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 
 Описание полей и методов:
 
-```js
-class RWStream
-
-      RWStream.setEndian(endian)
-      RWStream.getEncoding(type)
-      RWStream.getWriteType(type)
-      RWStream.getReadType(type)
-
-```
-
-
-```js
-class WriteStream extends RWStream
-
-      WriteStream.increment(add)
-      WriteStream.size()
-      WriteStream.skip(amount)
-      WriteStream.checkSize(length)
-      WriteStream.writeToBuffer(type, value, length)
-      WriteStream.write(type, value)
-      WriteStream.writeString(string, type)
-      WriteStream.buffer()   
-      WriteStream.concat(newStream)
-
-```
-
-
-```js
-class ReadStream extends RWStream
-
-      ReadStream.increment(add)
-      ReadStream.more(length)
-      ReadStream.reset()
-      ReadStream.end()
-      ReadStream.readFromBuffer(type, length)
-      ReadStream.read(type, length)
-      ReadStream.readString(length, type)
-      ReadStream.buffer()   
-      ReadStream.concat(newStream)
-
-```
-
 
 ```js
 class RWStream {
-  
+
   constructor() {
     this.endian = C.BIG_ENDIAN;
   }
@@ -307,49 +274,153 @@ RWStream.getReadType(type)  -- /*определить значение type пр
 
 <a id="field"></a>
 ## Field.js
-Данная библиотека предназначена...
 
-
-
-
-`console.log(9);`<!-- комментарий !!!-->
 
 ```js
-console.log('it is good code !!!');
+class Field {
+  constructor(type, value) {
+    this.type = type;
+    this.value = value;
+  }
 
-var F = require('./Field');
-var h = new F.HexField('3f');
-
-console.log('end.');
+  length(){...}
+  write(stream){...}
+  isNumeric(){...}
+}
 ```
+
+```js
+class Field{...}
+
+class StringField   extends Field{...}
+class FilledField   extends Field{...}
+class HexField      extends Field{...}
+class ReservedField extends Field{...}
+class UInt8Field    extends Field{...}
+class UInt16Field   extends Field{...}
+class UInt32Field   extends Field{...}
+class Int8Field     extends Field{...}
+class Int16Field    extends Field{...}
+class Int32Field    extends Field{...}
+class FloatField    extends Field{...}
+class DoubleField   extends Field{...}
+
+```
+
+Наследники содержат только конструктор и для числовых полей переопределена функция isNumeric.
+Метод write родителя в качестве аргумента требует поток записи и в теле вызывает метод write объекта поток записи.
+
+
+
+
+Раздел в разработке...
 
 [Вернуться к содержанию.](#content)
 
 
 <a id="data"></a>
 ## Data.js
-Данная библиотека предназначена...
+
+```js
+
+class ValueRepresentation{...}
+
+
+class ApplicationEntity   extends ValueRepresentation
+class CodeString          extends ValueRepresentation
+class AgeString           extends ValueRepresentation
+class AttributeTag        extends ValueRepresentation
+class DateValue           extends ValueRepresentation
+class DecimalString       extends ValueRepresentation
+class DateTime            extends ValueRepresentation
+class FloatingPointSingle extends ValueRepresentation
+class FloatingPointDouble extends ValueRepresentation
+class IntegerString       extends ValueRepresentation
+class LongString          extends ValueRepresentation
+class LongText            extends ValueRepresentation
+class PersonName          extends ValueRepresentation
+class ShortString         extends ValueRepresentation
+class SignedLong          extends ValueRepresentation
+class SequenceOfItems     extends ValueRepresentation
+class SignedShort         extends ValueRepresentation
+class ShortText           extends ValueRepresentation
+class TimeValue           extends ValueRepresentation
+class UnlimitedCharacters extends ValueRepresentation
+class UnlimitedText       extends ValueRepresentation
+class UnsignedShort       extends ValueRepresentation
+class UnsignedLong        extends ValueRepresentation
+class UniqueIdentifier    extends ValueRepresentation
+class UniversalResource   extends ValueRepresentation
+class UnknownValue        extends ValueRepresentation
+class OtherWordString     extends ValueRepresentation
+
+
+
+```
+
+
+Раздел в разработке...
 
 [Вернуться к содержанию.](#content)
 
 
 <a id="message"></a>
 ## Message.js
-Данная библиотека предназначена...
+
+```js
+
+
+class DicomMessage
+
+
+class DataSetMessage    extends DicomMessage
+class CommandMessage    extends DicomMessage
+class CommandResponse   extends DicomMessage
+
+
+class CFindRSP    extends CommandResponse
+class CGetRSP     extends CommandResponse
+class CMoveRSP    extends CommandResponse
+class CStoreRSP   extends CommandResponse
+
+
+class CFindRQ     extends CommandMessage
+class CMoveRQ     extends CommandMessage
+class CGetRQ      extends CommandMessage
+class CStoreRQ    extends CommandMessage
+
+
+
+```
+
+
+Раздел в разработке...
+
+[Вернуться к содержанию.](#content)
 
 
 <a id="pdu"></a>
 ## PDU.js
-Данная библиотека предназначена...
+
+Раздел в разработке...
+
+[Вернуться к содержанию.](#content)
 
 
 <a id="connection"></a>
 ## Connection.js
-Данная библиотека предназначена...
+
+Раздел в разработке...
+
+[Вернуться к содержанию.](#content)
+
 
 <a id="services"></a>
 ## Services.js
-Данная библиотека предназначена...
+
+Раздел в разработке...
+
+[Вернуться к содержанию.](#content)
 
 
 ### Примечание.

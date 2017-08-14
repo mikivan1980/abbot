@@ -26,12 +26,12 @@
 <a id="constants.d"></a>
 ## constants.js
 ```js
-var dicomNDict = {...};
+var dicomNDict = {...}
 var dicomVDict = {...}
 ```
 
-**dicomNDict** --  
-**dicomVDict** --
+`dicomNDict` --  
+`dicomVDict` --
 
 
 [Вернуться к содержанию.](#content.d)
@@ -54,12 +54,19 @@ function isString(type) {...}
 function calcLength(type, value) {...}
 ```
 
+`isString(type)` --
++ **type** --
+
+`calcLength(type, value)` --
++ **type** --
++ **value** --
+
 ```js
 // Классы модуля
-class class RWStream{...}
+class RWStream{...}
 
-class WriteStream extends RWStream
-class ReadStream extends RWStream
+class WriteStream  extends RWStream
+class ReadStream   extends RWStream
 ```
 
 

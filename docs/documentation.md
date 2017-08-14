@@ -5,6 +5,18 @@
 + B -- номер этапа разработки нового релиза
 + C -- номер шага к следующему номеру этапа разработки
 
+Node.js имеет собственную модульную систему, на момент написания данной документации процесс поддержки
+модулей ES6 не решен. Без API функций Node невозможно установить Tcp/Ip соединение с удаленным
+DICOM сервером для обмена данными, поэтому в библиотеке используется модульная система Node!
+
+Для перехода от одной модульной системы к другой, достаточно заменить:
+
+```js
+// Модульная система Node
+var calcLength = require('./RWStream').calcLength;
+// Модульная система ES6
+import { calcLength as calcLength } from './RWStream';
+````
 
 
 
@@ -96,6 +108,34 @@ TYPE_INT8, TYPE_INT16, TYPE_INT32.
 TYPE_INT8, TYPE_INT16, TYPE_INT32.
 
 
+```js
+class WriteStream extends RWStream
+```
+```js
+  //Конструктор класса
+  constructor() {
+    super();
+    this.defaultBufferSize = 512; //512 bytes
+    this.rawBuffer = new Buffer(this.defaultBufferSize);
+    this.offset = 0;
+    this.contentSize = 0;
+  }
+```  
+
+  increment(add){...}
+  size(){...}
+  skip(amount){...}
+  checkSize(length){...}
+  writeToBuffer(type, value, length){...}
+  write(type, value){...}
+  writeString(string, type){...}
+  buffer(){...}
+  concat(newStream){...}
+
+
+  ```js
+  class ReadStream   extends RWStream
+  ```
 
 
 

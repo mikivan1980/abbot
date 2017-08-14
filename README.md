@@ -172,43 +172,6 @@ console.log(el.dicomVDict["002808x4"]);
 Самостоятельное использование не предполагается, но возможно.
 Экземпляр выступает в качестве аргумента методов чтения или записи объектов представляющих структуры и типы данных стандарта DICOM.
 
-```js
-class RWStream {
-
-  constructor() {
-    this.endian = C.BIG_ENDIAN;
-  }
-
-  setEndian(endian){...}
-  getEncoding(type){...}
-  getWriteType(type){...}
-  getReadType(type){...}
-}
-```
-
-```js
-class WriteStream extends RWStream {
-
-  constructor() {
-    super();
-    this.defaultBufferSize = 512; //512 bytes
-    this.rawBuffer = new Buffer(this.defaultBufferSize);
-    this.offset = 0;
-    this.contentSize = 0;
-  }
-
-  increment(add){...}
-  size(){...}
-  skip(amount){...}
-  checkSize(length){...}
-  writeToBuffer(type, value, length){...}
-  write(type, value){...}
-  writeString(string, type){...}
-  buffer(){...}
-  concat(newStream){...}
-}
-```
-
 При создании экземпляра поток чтения или поток записи вызывается конструктор без параметров, создается необработанный буфер
 размером 512 байт, с обратным порядком байт записи типизированных значений переменных в буфер.
 Порядок записи байт можно изменять с помощью метода **setEndian(endian)**.
@@ -242,32 +205,6 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 
 Описание полей и методов:
 
-
-
-
-```js
-class RWStream
-```
-```js
-    //Конструктор класса
-    constructor() {
-        this.endian = C.BIG_ENDIAN;
-    }
-```
-
-`setEndian(endian)` -- установка прямого или обратного порядка следования байт в буфере.
-+ **endian**, значение -- BIG_ENDIAN или LITTLE_ENDIAN
-
-`getEncoding(type)` -- определяет тип кодировки для последовательности байт в буфере.
-+ **type**, значение -- TYPE_HEX или TYPE_ASCII
-
-`getWriteType(type)` -- определяет значение type представления данных в буфере для записи.
-+ **type**, значение --  TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
-TYPE_INT8, TYPE_INT16, TYPE_INT32.
-
-`getReadType(type)` -- определяет значение type представления данных в буфере для чтения.
-+ **type**, значение -- TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
-TYPE_INT8, TYPE_INT16, TYPE_INT32.
 
 
 

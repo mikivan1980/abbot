@@ -243,18 +243,24 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 
 ```js
 class RWStream
-RWStream.setEndian(endian)  --
-установка прямого или обратного порядка следования байт в буфере, значение endian -- BIG_ENDIAN или LITTLE_ENDIAN
-
-RWStream.getEncoding(type)  -- /* определить тип кодировки для последовательности байт в буфере,
-значение type -- TYPE_HEX или TYPE_ASCII*/
-
-RWStream.getWriteType(type) -- /*определить значение type представления данных в буфере для записи*/
-
-RWStream.getReadType(type)  -- /*определить значение type представления данных в буфере для чтения*/
-
-
 ```
+
+`setEndian(endian)` -- установка прямого или обратного порядка следования байт в буфере.
++ endian, значение -- BIG_ENDIAN или LITTLE_ENDIAN
+
+`getEncoding(type)` -- определяет тип кодировки для последовательности байт в буфере.
++ type, значение -- TYPE_HEX или TYPE_ASCII
+
+`getWriteType(type)` -- определяет значение type представления данных в буфере для записи.
++ type, значение --  TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
+TYPE_INT8, TYPE_INT16, TYPE_INT32.
+
+`getReadType(type)` -- определяет значение type представления данных в буфере для чтения.
++ type, значение -- TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
+TYPE_INT8, TYPE_INT16, TYPE_INT32.
+
+
+
 
 | Метод | Опиание |
 |---------------------| ----------------------- |
@@ -275,6 +281,7 @@ RWStream.getReadType(type)  -- /*определить значение type пр
 
 <a id="field"></a>
 ## Field.js
+Модуль определяет поле значений [Value Field] элемента данных [Data Element] и предоставляет методы для работы с ним.
 
 
 ```js

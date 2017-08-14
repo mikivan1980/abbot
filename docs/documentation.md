@@ -73,7 +73,7 @@ function calcLength(type, value) {...}
 + **type**, значение -- TYPE_HEX, TYPE_ASCII, TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
 TYPE_INT8, TYPE_INT16, TYPE_INT32
 
-`calcLength(type, value)` -- вычисление длинны типа представленного значения - value. 
+`calcLength(type, value)` -- вычисление длинны типа представленного значения - value.
 + **type** --  значение -- TYPE_HEX, TYPE_ASCII, TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
 TYPE_INT8, TYPE_INT16, TYPE_INT32
 + **value** --
@@ -126,9 +126,9 @@ class WriteStream extends RWStream
      }
 ```  
 
-`increment(add)` --
-
 `size()` --
+
+`increment(add)` --
 
 `skip(amount)` --
 
@@ -148,11 +148,36 @@ class WriteStream extends RWStream
   ```js
   class ReadStream   extends RWStream
   ```
+  ```js
+      //Конструктор класса  
+      constructor(buffer) {
+      super();
+      this.rawBuffer = buffer;
+      this.offset = 0;
+      }
+```
 
+`size()` --
 
+`increment(add)` --
+
+`more(length)` --
+
+`reset()` --
+
+`end()` --
+
+`readFromBuffer(type, length)` --
+
+`read(type, length)` --
+
+`readString(length, type)` --
+
+`buffer()` --
+
+`concat(newStream)` --
 
 Раздел в разработке...
-
 
 
 [Вернуться к содержанию.](#content.d)
@@ -160,12 +185,6 @@ class WriteStream extends RWStream
 
 <a id="field.d"></a>
 ## Field.js
-```js
-// Функции модуля
-
-
-```
-
 ```js
 // Классы модуля
 class Field{...}
@@ -183,6 +202,23 @@ class Int32Field    extends Field{...}
 class FloatField    extends Field{...}
 class DoubleField   extends Field{...}
 ```
+
+```js
+class Field
+```
+```js  
+    constructor(type, value) {
+        this.type = type;
+        this.value = value;
+    }
+```    
+
+`length()` --
+
+`write(stream)` --
+
+`isNumeric()` --
+
 
 
 

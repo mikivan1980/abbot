@@ -168,6 +168,43 @@ console.log(el.dicomVDict["002808x4"]);
 Самостоятельное использование не предполагается, но возможно.
 Экземпляр выступает в качестве аргумента методов чтения или записи объектов представляющих структуры и типы данных стандарта DICOM.
 
+```js
+class RWStream {
+
+  constructor() {
+    this.endian = C.BIG_ENDIAN;
+  }
+
+  setEndian(endian){...}
+  getEncoding(type){...}
+  getWriteType(type){...}
+  getReadType(type){...}
+}
+```
+
+```js
+class WriteStream extends RWStream {
+
+  constructor() {
+    super();
+    this.defaultBufferSize = 512; //512 bytes
+    this.rawBuffer = new Buffer(this.defaultBufferSize);
+    this.offset = 0;
+    this.contentSize = 0;
+  }
+
+  increment(add){...}
+  size(){...}
+  skip(amount){...}
+  checkSize(length){...}
+  writeToBuffer(type, value, length){...}
+  write(type, value){...}
+  writeString(string, type){...}
+  buffer(){...}
+  concat(newStream){...}
+}
+```
+
 При создании экземпляра поток чтения или поток записи вызывается конструктор без параметров, создается необработанный буфер
 размером 512 байт, с обратным порядком байт записи типизированных значений переменных в буфер.
 Порядок записи байт можно изменять с помощью метода **setEndian(endian)**.
@@ -202,43 +239,7 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 Описание полей и методов:
 
 
-```js
-class RWStream {
 
-  constructor() {
-    this.endian = C.BIG_ENDIAN;
-  }
-
-  setEndian(endian){...}
-  getEncoding(type){...}
-  getWriteType(type){...}
-  getReadType(type){...}
-}
-```
-
-
-```js
-class WriteStream extends RWStream {
-
-  constructor() {
-    super();
-    this.defaultBufferSize = 512; //512 bytes
-    this.rawBuffer = new Buffer(this.defaultBufferSize);
-    this.offset = 0;
-    this.contentSize = 0;
-  }
-
-  increment(add){...}
-  size(){...}
-  skip(amount){...}
-  checkSize(length){...}
-  writeToBuffer(type, value, length){...}
-  write(type, value){...}
-  writeString(string, type){...}
-  buffer(){...}
-  concat(newStream){...}
-}
-```
 
 ```js
 class RWStream
@@ -290,6 +291,7 @@ class Field {
 ```
 
 ```js
+// Классы модуля
 class Field{...}
 
 class StringField   extends Field{...}
@@ -322,7 +324,7 @@ class DoubleField   extends Field{...}
 ## Data.js
 
 ```js
-
+// Классы модуля
 class ValueRepresentation{...}
 
 
@@ -368,8 +370,7 @@ class OtherWordString     extends ValueRepresentation
 ## Message.js
 
 ```js
-
-
+// Классы модуля
 class DicomMessage
 
 
@@ -402,6 +403,34 @@ class CStoreRQ    extends CommandMessage
 <a id="pdu"></a>
 ## PDU.js
 
+```js
+// Классы модуля
+class PDU
+
+
+class AssociateRQ extends PDU
+
+
+class AssociateAC    extends AssociateRQ
+class AssociateAbort extends PDU
+class ReleaseRQ      extends PDU
+class ReleaseRP      extends PDU
+class PDataTF        extends PDU
+class Item           extends PDU
+
+
+class PresentationDataValueItem     extends Item
+class ApplicationContextItem        extends Item
+class PresentationContextItem       extends Item
+class AbstractSyntaxItem            extends Item
+class TransferSyntaxItem            extends Item
+class UserInformationItem           extends Item
+class ImplementationClassUIDItem    extends Item
+class ImplementationVersionNameItem extends Item
+class MaximumLengthItem             extends Item
+
+
+```
 Раздел в разработке...
 
 [Вернуться к содержанию.](#content)

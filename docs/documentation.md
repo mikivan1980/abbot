@@ -25,8 +25,13 @@
 
 <a id="constants.d"></a>
 ## constants.js
+```js
+var dicomNDict = {...};
+var dicomVDict = {...}
+```
 
-
+**dicomNDict** --  
+**dicomVDict** --
 
 
 [Вернуться к содержанию.](#content.d)
@@ -43,6 +48,21 @@
 
 <a id="rwstream.d"></a>
 ## RWStream.js
+```js
+// Функции модуля
+function isString(type) {...}
+function calcLength(type, value) {...}
+```
+
+```js
+// Классы модуля
+class class RWStream{...}
+
+class WriteStream extends RWStream
+class ReadStream extends RWStream
+```
+
+
 
 ```js
 class RWStream

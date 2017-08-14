@@ -119,7 +119,7 @@ that are independent of any encoding scheme.
 дополнительные определения см. DICOM PS3.5 2017c - Data Structures and Encoding,
 раздел: 3.10 DICOM Data Structures and Encoding Definitions, стр. 22-23.
 
-![data_structures](https://github.com/mikivan1980/abbot/blob/master/img/DICOM_Data_Set_and_Data_Element_Structures.png)
+![data_structures](https://github.com/mikivan1980/abbot/blob/master/docs/img/DICOM_Data_Set_and_Data_Element_Structures.png)
 
 
 Необходимо стремиться повторить шестой том стандарта при реализации приложений и библиотек предназначенных для работы с
@@ -147,6 +147,7 @@ var dicomVDict = {...
 ...}
 ```
 
+Напомним, что при создании экземпляра Object с использованием нотации литералов, числовые имена свойств автоматически преобразуются в строки.
 
 ```js
 // our_test.js
@@ -160,8 +161,6 @@ console.log(el.dicomVDict["002808x4"]);
 //-command prompt/> { vr: 'DA', vm: 1, keyword: 'StudyDate' }
 //-command prompt/> { vr: 'US', vm: 1, keyword: 'BitsForCodeWord' }
 ```
-
-Напомним, что при создании экземпляра Object с использованием нотации литералов, числовые имена свойств автоматически преобразуются в строки.
 
 [Вернуться к содержанию.](#content)
 

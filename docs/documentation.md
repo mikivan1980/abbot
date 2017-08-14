@@ -126,7 +126,7 @@ class WriteStream extends RWStream
      }
 ```  
 
-`size()` -- определяет длину записанного в поток записи контента.
+`size()` -- определяет длину помещенного в поток записи контента.
 
 `increment(add)` --
 
@@ -157,7 +157,7 @@ class WriteStream extends RWStream
       }
 ```
 
-`size()` --
+`size()` -- определяет длину помещенного в поток чтения контента.
 
 `increment(add)` --
 
@@ -213,23 +213,67 @@ class Field
     }
 ```    
 
-`length()` --
+`length()` -- определяет длину значения поля.
 
-`write(stream)` --
+`write(stream)` -- помещает значение value в поток записи stream.
 
-`isNumeric()` --
+`isNumeric()` -- всегда возвращает false.
 
 
 ```js
-class StringField, class FilledField, class HexField, class ReservedField, class UInt8Field, class UInt16Field,
-class UInt32Field, class Int8Field, class Int16Field, class Int32Field, class FloatField, class DoubleField  extends Field{...}
+class StringField   extends Field
+class HexField      extends Field
 ```
 ```js  
     constructor(value) {
-        super(C.TYPE_ASCII, value);
+        super(type, str);
+    }
+```
++ **type**, значение -- C.TYPE_ASCII, C.TYPE_HEX.
+
+
+```js
+class FilledField   extends Field
+```
+```js  
+    constructor(value, length) {
+        super(C.TYPE_COMPOSITE, value);
+        this.fillLength = length;
     }
 ```
 
+
+```js
+class ReservedField extends Field
+```
+```js  
+    constructor(length) {
+         length = length || 1;
+         super(C.TYPE_HEX, "00".repeat(length));
+    }
+```
+
+
+```js
+class UInt8Field    extends Field
+class UInt16Field   extends Field
+class UInt32Field   extends Field
+class Int8Field     extends Field
+class Int16Field    extends Field
+class Int32Field    extends Field
+class FloatField    extends Field
+class DoubleField   extends Field
+```
+Классы имеют схожие конструкторы, но разные type в зависимости от типа значения поля [Value Field]
+```js  
+    constructor(value) {
+        super(type, value);
+    }
+```
++ **type**, значение --  TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_INT8, TYPE_INT16, TYPE_INT32,
+TYPE_FLOAT, TYPE_DOUBLE.
+
+`isNumeric()` -- всегда возвращает true.
 
 Раздел в разработке...
 

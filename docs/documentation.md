@@ -151,9 +151,9 @@ class WriteStream extends RWStream
   ```js
       //Конструктор класса  
       constructor(buffer) {
-      super();
-      this.rawBuffer = buffer;
-      this.offset = 0;
+          super();
+          this.rawBuffer = buffer;
+          this.offset = 0;
       }
 ```
 
@@ -220,6 +220,15 @@ class Field
 `isNumeric()` --
 
 
+```js
+class StringField, class FilledField, class HexField, class ReservedField, class UInt8Field, class UInt16Field,
+class UInt32Field, class Int8Field, class Int16Field, class Int32Field, class FloatField, class DoubleField  extends Field{...}
+```
+```js  
+    constructor(value) {
+        super(C.TYPE_ASCII, value);
+    }
+```
 
 
 Раздел в разработке...

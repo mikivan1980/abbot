@@ -19,10 +19,10 @@ import { calcLength as calcLength } from './RWStream';
 ````
 
 
-
+<!-- d = ссылки в documentation.md -->
 <a id="content.d"></a>
 ## Перейти [лестница аббата]
-- [constants.js](#constants.d) <!-- d -- ссылки в documentation.md -->
+- [constants.js](#constants.d)
 - [elements_data.js](#element.d)
 - [RWStream.js](#rwstream.d)
 - [Field.js](#field.d)
@@ -38,12 +38,10 @@ import { calcLength as calcLength } from './RWStream';
 <a id="constants.d"></a>
 ## constants.js
 ```js
-var dicomNDict = {...}
-var dicomVDict = {...}
+var C = {...}
 ```
 
-`dicomNDict` --  
-`dicomVDict` --
+`C` -- коллекция групп мульти - констант библиотеки, позволяет осуществить однотипное ветвление по значению.  
 
 
 [Вернуться к содержанию.](#content.d)
@@ -51,8 +49,13 @@ var dicomVDict = {...}
 
 <a id="elements.d"></a>
 ## elements_data.js
+```js
+var dicomNDict = {...}
+var dicomVDict = {...}
+```
 
-
+`dicomNDict` -- одно-однозначное отношение тег - атрибут записи словаря данных, определены в томе 6 стандарта.
+`dicomVDict` -- много-однозначное отношение тег - атрибут записи словаря данных, определены в томе 6 стандарта.
 
 
 [Вернуться к содержанию.](#content.d)
@@ -66,11 +69,13 @@ function isString(type) {...}
 function calcLength(type, value) {...}
 ```
 
-`isString(type)` --
-+ **type** --
+`isString(type)` -- определяет является ли тип строковым, верно только при значении **type** - TYPE_HEX, TYPE_ASCII.
++ **type**, значение -- TYPE_HEX, TYPE_ASCII, TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
+TYPE_INT8, TYPE_INT16, TYPE_INT32
 
-`calcLength(type, value)` --
-+ **type** --
+`calcLength(type, value)` -- вычисление длинны типа представленного значения - value. 
++ **type** --  значение -- TYPE_HEX, TYPE_ASCII, TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
+TYPE_INT8, TYPE_INT16, TYPE_INT32
 + **value** --
 
 ```js
@@ -80,7 +85,6 @@ class RWStream{...}
 class WriteStream  extends RWStream
 class ReadStream   extends RWStream
 ```
-
 
 
 ```js
@@ -112,25 +116,33 @@ TYPE_INT8, TYPE_INT16, TYPE_INT32.
 class WriteStream extends RWStream
 ```
 ```js
-  //Конструктор класса
-  constructor() {
-    super();
-    this.defaultBufferSize = 512; //512 bytes
-    this.rawBuffer = new Buffer(this.defaultBufferSize);
-    this.offset = 0;
-    this.contentSize = 0;
-  }
+    //Конструктор класса
+    constructor() {
+        super();
+        this.defaultBufferSize = 512; //512 bytes
+        this.rawBuffer = new Buffer(this.defaultBufferSize);
+        this.offset = 0;
+        this.contentSize = 0;
+     }
 ```  
 
-  increment(add){...}
-  size(){...}
-  skip(amount){...}
-  checkSize(length){...}
-  writeToBuffer(type, value, length){...}
-  write(type, value){...}
-  writeString(string, type){...}
-  buffer(){...}
-  concat(newStream){...}
+`increment(add)` --
+
+`size()` --
+
+`skip(amount)` --
+
+`checkSize(length)` --
+
+`writeToBuffer(type, value, length)` --
+
+`write(type, value)` --
+
+`writeString(string, type)` --
+
+`buffer()` --
+
+`concat(newStream)` --
 
 
   ```js
@@ -148,8 +160,29 @@ class WriteStream extends RWStream
 
 <a id="field.d"></a>
 ## Field.js
+```js
+// Функции модуля
 
 
+```
+
+```js
+// Классы модуля
+class Field{...}
+
+class StringField   extends Field{...}
+class FilledField   extends Field{...}
+class HexField      extends Field{...}
+class ReservedField extends Field{...}
+class UInt8Field    extends Field{...}
+class UInt16Field   extends Field{...}
+class UInt32Field   extends Field{...}
+class Int8Field     extends Field{...}
+class Int16Field    extends Field{...}
+class Int32Field    extends Field{...}
+class FloatField    extends Field{...}
+class DoubleField   extends Field{...}
+```
 
 
 
@@ -160,7 +193,45 @@ class WriteStream extends RWStream
 
 <a id="data.d"></a>
 ## Data.js
+```js
+// Функции модуля
 
+
+```
+
+```js
+// Классы модуля
+class ValueRepresentation{...}
+
+
+class ApplicationEntity   extends ValueRepresentation
+class CodeString          extends ValueRepresentation
+class AgeString           extends ValueRepresentation
+class AttributeTag        extends ValueRepresentation
+class DateValue           extends ValueRepresentation
+class DecimalString       extends ValueRepresentation
+class DateTime            extends ValueRepresentation
+class FloatingPointSingle extends ValueRepresentation
+class FloatingPointDouble extends ValueRepresentation
+class IntegerString       extends ValueRepresentation
+class LongString          extends ValueRepresentation
+class LongText            extends ValueRepresentation
+class PersonName          extends ValueRepresentation
+class ShortString         extends ValueRepresentation
+class SignedLong          extends ValueRepresentation
+class SequenceOfItems     extends ValueRepresentation
+class SignedShort         extends ValueRepresentation
+class ShortText           extends ValueRepresentation
+class TimeValue           extends ValueRepresentation
+class UnlimitedCharacters extends ValueRepresentation
+class UnlimitedText       extends ValueRepresentation
+class UnsignedShort       extends ValueRepresentation
+class UnsignedLong        extends ValueRepresentation
+class UniqueIdentifier    extends ValueRepresentation
+class UniversalResource   extends ValueRepresentation
+class UnknownValue        extends ValueRepresentation
+class OtherWordString     extends ValueRepresentation
+```
 
 
 Раздел в разработке...
@@ -170,7 +241,33 @@ class WriteStream extends RWStream
 
 <a id="message.d"></a>
 ## Message.js
+```js
+// Функции модуля
 
+
+```
+
+```js
+// Классы модуля
+class DicomMessage{...}
+
+
+class DataSetMessage    extends DicomMessage
+class CommandMessage    extends DicomMessage
+class CommandResponse   extends DicomMessage
+
+
+class CFindRSP    extends CommandResponse
+class CGetRSP     extends CommandResponse
+class CMoveRSP    extends CommandResponse
+class CStoreRSP   extends CommandResponse
+
+
+class CFindRQ     extends CommandMessage
+class CMoveRQ     extends CommandMessage
+class CGetRQ      extends CommandMessage
+class CStoreRQ    extends CommandMessage
+```
 
 Раздел в разработке...
 
@@ -179,6 +276,40 @@ class WriteStream extends RWStream
 
 <a id="pdu.d"></a>
 ## PDU.js
+```js
+// Функции модуля
+
+
+```
+
+```js
+// Классы модуля
+class PDU{...}
+
+
+class AssociateRQ extends PDU
+
+
+class AssociateAC    extends AssociateRQ
+class AssociateAbort extends PDU
+class ReleaseRQ      extends PDU
+class ReleaseRP      extends PDU
+class PDataTF        extends PDU
+class Item           extends PDU
+
+
+class PresentationDataValueItem     extends Item
+class ApplicationContextItem        extends Item
+class PresentationContextItem       extends Item
+class AbstractSyntaxItem            extends Item
+class TransferSyntaxItem            extends Item
+class UserInformationItem           extends Item
+class ImplementationClassUIDItem    extends Item
+class ImplementationVersionNameItem extends Item
+class MaximumLengthItem             extends Item
+```
+
+
 Раздел в разработке...
 
 [Вернуться к содержанию.](#content.d)
@@ -186,6 +317,17 @@ class WriteStream extends RWStream
 
 <a id="connection.d"></a>
 ## Connection.js
+```js
+// Функции модуля
+
+
+```
+
+```js
+// Классы модуля
+
+
+```
 
 Раздел в разработке...
 
@@ -194,6 +336,18 @@ class WriteStream extends RWStream
 
 <a id="services.d"></a>
 ## Services.js
+```js
+// Функции модуля
+
+
+```
+
+```js
+// Классы модуля
+
+
+```
+
 
 Раздел в разработке...
 

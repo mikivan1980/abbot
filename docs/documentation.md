@@ -23,7 +23,7 @@ import { calcLength as calcLength } from './RWStream';
 <a id="content.d"></a>
 ## Перейти [лестница аббата]
 - [constants.js](#constants.d)
-- [elements_data.js](#element.d)
+- [elements_data.js](#elements.d)
 - [RWStream.js](#rwstream.d)
 - [Field.js](#field.d)
 - [Data.js](#data.d)
@@ -126,7 +126,7 @@ class WriteStream extends RWStream
      }
 ```  
 
-`size()` --
+`size()` -- определяет длину записанного в поток записи контента.
 
 `increment(add)` --
 

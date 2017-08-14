@@ -1,4 +1,4 @@
-# Документация по работе с библиотекой - abbot.
+# Работа с библиотекой - abbot.
 
 Данная библиотека JavaScript предназначена для работы с объектами и сообщениями стандарта DICOM
 
@@ -244,19 +244,25 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 ```js
 class RWStream
 ```
+```js
+    //Конструктор класса
+    constructor() {
+        this.endian = C.BIG_ENDIAN;
+    }
+```
 
 `setEndian(endian)` -- установка прямого или обратного порядка следования байт в буфере.
-+ endian, значение -- BIG_ENDIAN или LITTLE_ENDIAN
++ **endian**, значение -- BIG_ENDIAN или LITTLE_ENDIAN
 
 `getEncoding(type)` -- определяет тип кодировки для последовательности байт в буфере.
-+ type, значение -- TYPE_HEX или TYPE_ASCII
++ **type**, значение -- TYPE_HEX или TYPE_ASCII
 
 `getWriteType(type)` -- определяет значение type представления данных в буфере для записи.
-+ type, значение --  TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
++ **type**, значение --  TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
 TYPE_INT8, TYPE_INT16, TYPE_INT32.
 
 `getReadType(type)` -- определяет значение type представления данных в буфере для чтения.
-+ type, значение -- TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
++ **type**, значение -- TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_COMPOSITE, TYPE_FLOAT, TYPE_DOUBLE,
 TYPE_INT8, TYPE_INT16, TYPE_INT32.
 
 
@@ -464,9 +470,9 @@ class MaximumLengthItem             extends Item
 
 | Метод | Опиание |
 |-----------------------------------| ----------------------- |
-| Начало разработки:                | 9 августа 2017 года |
-| Последние обновление:             | 14 августа 2017 года |
-| План сбора урожая:                |  21 августа 2017 года  |
+| Начало разработки:                | 9 августа 2017 года     |
+| Последнее обновление:             | 14 августа 2017 года    |
+| План сбора урожая:                |  21 августа 2017 года   |
 | Протестировано на файлах DICOM    | 0 шт.  |
 
 

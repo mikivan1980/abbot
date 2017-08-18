@@ -264,18 +264,17 @@ class Int32Field    extends Field
 class FloatField    extends Field
 class DoubleField   extends Field
 ```
-Классы имеют схожие конструкторы, но разные type в зависимости от типа значения поля [Value Field]
+Классы имеют схожие конструкторы, отличаясь предопределенным значением параметра #type_from_name.
 ```js  
     constructor(value) {
-        super(type, value);
+        super(#type_from_name, value);
     }
 ```
-+ **type**, значение --  TYPE_UINT8, TYPE_UINT16, TYPE_UINT32, TYPE_INT8, TYPE_INT16, TYPE_INT32,
-TYPE_FLOAT, TYPE_DOUBLE.
++ **#type_from_name**, значение параметра --  TYPE_UINT8 для UInt8Field, TYPE_UINT16 для UInt16Field, TYPE_UINT32 для UInt32Field,
+TYPE_INT8 для Int8Field, TYPE_INT16 для Int16Field, TYPE_INT32 для Int32Field, TYPE_FLOAT для FloatField, TYPE_DOUBLE для DoubleField.
 
 `isNumeric()` -- всегда возвращает true.
 
-Раздел в разработке...
 
 [Вернуться к содержанию.](#content.d)
 
@@ -306,7 +305,7 @@ function readElements(stream, syntax) {...}
 ```
 
 `paddingLeft(paddingValue, string)` -- производит конкатенацию параметров с обрезанием справа на длину первого параметра.
-когда второй параметр string пуста¤ строка - '', выводом будет первый аргумент и наоборот.
+когда второй параметр string пустая строка - '', выводом будет первый аргумент и наоборот.
 + **paddingValue** -- строка заполнитель, задет и длину выводимой строки.
 + **string** -- расширяемая строка
 

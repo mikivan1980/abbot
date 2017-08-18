@@ -221,25 +221,18 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 
 <a id="field"></a>
 ## Field.js
-Модуль определяет поле значений [Value Field] элемента данных [Data Element] и предоставляет методы для работы с ним.
+Модуль предназначен для определения поля значения [Value Field] элемента данных [Data Element] и предоставляет методы для работы с ним.
 
 
 ```js
 class Field {
-  constructor(type, value) {
-    this.type = type;
-    this.value = value;
-  }
 
-  length(){...}
-  write(stream){...}
-  isNumeric(){...}
 }
 ```
 
 
 
-Наследники содержат только конструктор и для числовых полей переопределена функция isNumeric.
+Для числовых полей переопределена функция isNumeric равная true.
 Метод write родителя в качестве аргумента требует поток записи и в теле вызывает метод write объекта поток записи.
 
 

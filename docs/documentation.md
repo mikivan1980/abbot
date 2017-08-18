@@ -284,9 +284,64 @@ TYPE_FLOAT, TYPE_DOUBLE.
 ## Data.js
 ```js
 // Функции модуля
+function paddingLeft(paddingValue, string) {...}
 
+function rtrim(str) {...}
+function ltrim(str) {...}
 
+function fieldsLength(fields) {...}
+
+function tagFromNumbers(group, element) {...}
+function readTag(stream) {...}
+
+function parseElements(stream, syntax) {...}
+
+function elementByType(type, value, syntax) {...}
+function elementDataByTag(tag) {...}
+function elementKeywordByTag(tag) {...}
+
+function vrByType(type) {...}
+
+function readElements(stream, syntax) {...}
 ```
+
+`paddingLeft(paddingValue, string)` -- производит конкатенацию параметров с обрезанием справа на длину первого параметра.
+когда второй параметр string пуста¤ строка - '', выводом будет первый аргумент и наоборот.
++ **paddingValue** -- строка заполнитель, задет и длину выводимой строки.
++ **string** -- расширяемая строка
+
+`rtrim(str)` -- убирает пробелы справа у str, недоступна вне модуля (нет экспорта)
++ **str** --
+
+`ltrim(str)` -- убирает пробелы слева у str, недоступна вне модуля (нет экспорта)
++ **str** --
+
+`fieldsLength(fields)` -- ,недоступна вне модуля (нет экспорта)
++ **fields** --
+
+`tagFromNumbers(group, element)` -- возвращает экземпляр Tag, недоступна вне модуля (нет экспорта)
++ **group** -- числовое значение номера группы
++ **element** -- числовое значение номера элемента
+
+`readTag(stream)` -- возвращает Tag, последовательно читает два значение C.TYPE_UINT16 из представленного
+stream экземпляра потока чтения, недоступна вне модуля (нет экспорта).
++ **stream** -- поток чтения.
+
+`parseElements(stream, syntax)` --
++ **stream** --
++ **syntax** --
+
+`` --
++ **** --
++ **** --
+
+`` --
++ **** --
++ **** --
+
+
+
+
 
 ```js
 // Классы модуля

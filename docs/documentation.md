@@ -126,23 +126,26 @@ class WriteStream extends RWStream
      }
 ```  
 
-`size()` -- определяет длину помещенного в поток записи контента.
+`size()` -- определяет длину контента помещенного в поток записи.
 
-`increment(add)` --
+`increment(add)` -- увеличивает смещения offset на значение add, проверка на offset > this.rawBuffer.length не производится.
 
-`skip(amount)` --
+`skip(amount)` -- это `increment(amount)`
 
-`checkSize(length)` --
+`checkSize(length)` -- проверяет, возможность записи в поток записи length байт с позиции offset, если это невозможно
+создает буфер большего размера.
 
-`writeToBuffer(type, value, length)` --
+`writeToBuffer(type, value, length)` -- помещает значение value в поток записи как тип type занимая length байт буфера,
+ничего не происходит в случае, если value === "" или value === null, проверка на length_in_bytes(value) > length не производиться,
+при необходимости размер буфера потока записи увеличивается автоматически (применяется checkSize(length)).
 
-`write(type, value)` --
+`write(type, value)` --  помещает значение value в поток записи как тип type, вычисляется длинна типа calcLength(type).
 
 `writeString(string, type)` --
 
-`buffer()` --
+`buffer()` -- возвращает буфер содержащий только контент потока записи.
 
-`concat(newStream)` --
+`concat(newStream)` -- добавляет к текущему потоку записи поток записи - newStream.
 
 
   ```js
@@ -157,7 +160,7 @@ class WriteStream extends RWStream
       }
 ```
 
-`size()` -- определяет длину помещенного в поток чтения контента.
+`size()` -- возвращает размер буфер (контента) в потоке чтения.
 
 `increment(add)` --
 

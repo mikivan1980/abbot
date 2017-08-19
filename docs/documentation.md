@@ -145,7 +145,7 @@ class WriteStream extends RWStream
 
 `buffer()` -- возвращает буфер содержащий только контент потока записи.
 
-`concat(newStream)` -- добавляет к текущему потоку записи поток записи - newStream.
+`concat(newStream)` -- добавляет к текущему потоку записи поток чтения или записи (только контент) - newStream.
 
 
   ```js
@@ -162,23 +162,23 @@ class WriteStream extends RWStream
 
 `size()` -- возвращает размер буфер (контента) в потоке чтения.
 
-`increment(add)` --
+`increment(add)` -- увеличение this.offset на add, проверка на this.offset > this.rawBuffer.length не производится.
 
-`more(length)` --
+`more(length)` -- возвращает поток чтения с буфером длинной length, буфер нового потока чтения копия с текущего буфера потока чтения с позиции this.offset.
 
-`reset()` --
+`reset()` -- возвращает текущий поток чтения, смещением возвращено в начало буфер потока чтения.
 
-`end()` --
+`end()` -- вазращает true, когда this.offset >= this.size(), иначе false.
 
-`readFromBuffer(type, length)` --
+`readFromBuffer(type, length)` -- возвращает значение прочтенное из буфера потока чтения как тип type, производится изменение смещения на length.
 
-`read(type, length)` --
+`read(type, length)` -- аналогична write(type, value) потока записи
 
 `readString(length, type)` --
 
-`buffer()` --
+`buffer()` -- возвращает буфер потока чтения.
 
-`concat(newStream)` --
+`concat(newStream)` --  добавляет к текущему потоку чтения поток чтения или записи (только контент) - newStream.
 
 Раздел в разработке...
 
@@ -229,10 +229,10 @@ class HexField      extends Field
 ```
 ```js  
     constructor(value) {
-        super(type, str);
+        super(#type_from_name, str);
     }
 ```
-+ **type**, значение -- C.TYPE_ASCII, C.TYPE_HEX.
++ **#type_from_name**, значение -- C.TYPE_ASCII для StringField, C.TYPE_HEX для HexField.
 
 
 ```js

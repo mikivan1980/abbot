@@ -225,17 +225,33 @@ stream.write( C.TYPE_UINT32, num);  console.log(stream.rawBuffer);
 
 
 ```js
-class Field {
+var RW = require('./RWStream');
+var F = require('./Field');
 
-}
+
+var stream = new RW.WriteStream();
+
+var h = new F.HexField('3f');
+var s = new F.StringField('Hello world !');
+
+console.log('Type h is ' + h.type);
+
+console.log(stream.buffer());
+
+h.write(stream);
+h.write(stream);
+s.write(stream);
+h.write(stream);
+
+console.log(stream.buffer());
+
+// Вывод:
+//-command prompt/> Type h is 2
+//-command prompt/> <Buffer >
+//-command prompt/> <Buffer 3f 3f 48 65 6c 6c 6f 20 77 6f 72 6c 64 20 21 3f>
 ```
 
-
-
-Для числовых полей переопределена функция isNumeric равная true.
 Метод write родителя в качестве аргумента требует поток записи и в теле вызывает метод write объекта поток записи.
-
-
 
 
 Раздел в разработке...

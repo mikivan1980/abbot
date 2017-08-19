@@ -285,8 +285,8 @@ The Data Elements in a Data Set shall be ordered by increasing Data Element Tag 
 
 Элемент данных [Data Element] должен иметь одну из трех структур:
 + Элемент данных [Data Element] содержит VR - (Explicit VR)
-длинна 1 вариант
-длинна 2 вариант
++ + длинна 1 вариант
++ + длинна 2 вариант
 + Элемент данных [Data Element] не содержит VR - (Implicit VR)
 
  Все три структуры обязательно содержат тег элемента данных [Data Elements Tag], длину [Length] и значение поля [Value Field] для элемента данных.

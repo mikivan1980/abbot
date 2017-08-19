@@ -46,6 +46,7 @@ class RWStream {
   }
 
   getReadType(type) {
+    console.log('%%%%%%%%%%%%%5---' + this.endian + '    ^    ' + type);
     return RWStream.reads[this.endian][type];
   }
 }
@@ -127,7 +128,7 @@ module.exports.WriteStream = WriteStream;
 class ReadStream extends RWStream {
   constructor(buffer) {
     super();
-    this.rawBuffer = buffer;
+    this.rawBuffer = new Buffer(buffer);
     this.offset = 0;
   }
 
@@ -156,6 +157,8 @@ class ReadStream extends RWStream {
 
   readFromBuffer(type, length) {
     //this.checkSize(length);
+    console.log('$$$$$$$$$$$====' + type);
+    console.log('$$$$$$$$$$$$$$$$$$---' + this.getReadType(type));
     let value = this.rawBuffer[this.getReadType(type)](this.offset);
     this.increment(length);
     return value;

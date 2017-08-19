@@ -287,6 +287,8 @@ The Data Elements in a Data Set shall be ordered by increasing Data Element Tag 
 
 Элементы данных с Explicit VR и Implicit VR не должны сосуществовать в наборе данных и наборах данных, вложенных в него (см. Раздел 7.5). Независимо от того, использует ли Explicit VR или Implicit VR, среди других характеристик, определяется согласованный синтаксис передачи [negotiated Transfer Syntax] (см. Раздел 10 и приложение А).
 
+page 48
+
 
 Раздел в разработке...
 

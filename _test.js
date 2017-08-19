@@ -39,39 +39,39 @@
 
 //console.log(RW.RWStream);
 
-var RW = require('./RWStream');
-var F = require('./Field');
-
-
-var stream = new RW.WriteStream();
-
-//console.log('length buffer of stream_to_write: ' + stream_to_write.defaultBufferSize + '\n');
-
-
-var n = new F.UInt32Field(2378410);
-var h = new F.HexField('3f');
-var s = new F.StringField('Hello world !');
-
-////если ввести '0x3f' то h будет определена как строка и во втором случае не пойдет в буфер, нет вывода об ошибке
-//console.log('true to stream:  ' + (new F.HexField('3f')).value);
-//console.log('false to stream: ' + (new F.HexField('0x3f')).value);
-
-
-console.log('Type h is ' + h.type);
-
-console.log(stream.buffer());
-
-h.write(stream);
-h.write(stream);
-s.write(stream);
-h.write(stream);
-n.write(stream);
-h.write(stream);
-
-//console.log(stream.offset);
-//console.log(stream.contentSize);
-
-console.log(stream.buffer());
+// var RW = require('./RWStream');
+// var F = require('./Field');
+//
+//
+// var stream = new RW.WriteStream();
+//
+// //console.log('length buffer of stream_to_write: ' + stream_to_write.defaultBufferSize + '\n');
+//
+//
+// var n = new F.UInt32Field(2378410);
+// var h = new F.HexField('3f');
+// var s = new F.StringField('Hello world !');
+//
+// ////если ввести '0x3f' то h будет определена как строка и во втором случае не пойдет в буфер, нет вывода об ошибке
+// //console.log('true to stream:  ' + (new F.HexField('3f')).value);
+// //console.log('false to stream: ' + (new F.HexField('0x3f')).value);
+//
+//
+// console.log('Type h is ' + h.type);
+//
+// console.log(stream.buffer());
+//
+// h.write(stream);
+// h.write(stream);
+// s.write(stream);
+// h.write(stream);
+// n.write(stream);
+// h.write(stream);
+//
+// //console.log(stream.offset);
+// //console.log(stream.contentSize);
+//
+// console.log(stream.buffer());
 
 
 //
@@ -89,14 +89,62 @@ console.log(stream.buffer());
 
 
 
+//console.log('\n------/> success...');
+
+//Когда  будем dicom файл помещать в raw Buffer
+
+var C = require('./constants');
+var RW = require('./RWStream');
+var D = require('./Data');
+
+const fs = require('fs');
+
+//var DataSet = fs.readFileSync('_test_mr.dcm', 'utf8');
+
+var DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm', 'ascii') );
+
+DataSet.increment( 128 + 4 );
+
+var el = new D.DataElement();
+
+
+//console.log(  DataSet.more(10).buffer().toString('hex') );
+
+console.log(  DataSet.read(C.TYPE_UINT16)  );
+
+//console.log(  DataSet.more(10).rawBuffer.slice(0,7));
+
+console.log( DataSet.read( C.TYPE_UINT16) );
+
+D.readElements( DataSet ) ;//C.EXPLICIT_LITTLE_ENDIAN);
+
+
+//var a = new Buffer(fs.readFileSync('_test_mr.dcm', 'ascii'));
+
+//console.log(  a.slice(128,134));
+
+
+//el.readBytes(DataSet);
+
+//var stream = new RW.WriteStream();
+
+//el.write(stream);
+
+//console.log(stream.buffer());
+
+console.log(DataSet.size());
+
+//console.log(DataSet.buffer().toString());
+
+// fs.readFile('_test_mr.dcm', 'utf8', (err, data) => {
+//  if (err) return 'Error: ' + err;
+//  else return data;
+//    //console.log('read file: ' +  data.length + '\n content: \n' + data.toString());
+// });
+
 console.log('\n------/> success...');
 
-// //Когда  будем dicom файл помещать в raw Buffer
-// const fs = require('fs');
-// fs.readFile('RWStream.js', 'utf8', (err, data) => {
-//   if (err) return 'Error: ' + err; return data;
-//   //console.log('read file: ' +  data.length + '\n content: \n' + data.toString());
-// });
+
 //
 // const arr = new Uint16Array(2);
 //

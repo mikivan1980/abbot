@@ -116,7 +116,11 @@ console.log(  DataSet.read(C.TYPE_UINT16)  );
 
 console.log( DataSet.read( C.TYPE_UINT16) );
 
+
+console.log('endian = = ' + DataSet.endian );
+
 D.readElements( DataSet ) ;//C.EXPLICIT_LITTLE_ENDIAN);
+
 
 
 //var a = new Buffer(fs.readFileSync('_test_mr.dcm', 'ascii'));

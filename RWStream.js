@@ -130,6 +130,7 @@ class ReadStream extends RWStream {
     super();
     this.rawBuffer = new Buffer(buffer);
     this.offset = 0;
+    console.log('this.endian = ===' + this.endian);
   }
 
   size() {

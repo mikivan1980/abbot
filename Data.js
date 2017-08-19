@@ -896,7 +896,8 @@ function readElements(stream, syntax) {
 
   let oldEndian = stream.endian;
   stream.setEndian(this.endian);
-console.log('----------------' + C.TYPE_UINT16 );
+console.log('@@@@@@@@@@@@@----' +  stream.size() + '    -    ' + stream.offset  + '    -    ' + stream.endian + '   ^   ' + this.endian);
+//console.log('----------------' + C.TYPE_UINT16 );
   let group = stream.read(C.TYPE_UINT16),
       element = stream.read(C.TYPE_UINT16),
       tag = new Tag((group << 16) | element),

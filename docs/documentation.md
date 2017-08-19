@@ -172,7 +172,7 @@ class WriteStream extends RWStream
 
 `readFromBuffer(type, length)` -- возвращает значение прочтенное из буфера потока чтения как тип type, производится изменение смещения на length.
 
-`read(type, length)` -- аналогична write(type, value) потока записи
+`read(type, length)` -- аналогична write(type, value) потока записи, прочитать значение из потока чтения как тип type.
 
 `readString(length, type)` --
 
@@ -312,41 +312,31 @@ function readElements(stream, syntax) {...}
 + **paddingValue** -- строка заполнитель, задет и длину выводимой строки.
 + **string** -- расширяемая строка
 
-`rtrim(str)` -- убирает пробелы справа у str, недоступна вне модуля (нет экспорта)
-+ **str** --
+`rtrim(str)` -- убирает пробелы справа в строке - str, недоступна вне модуля (нет экспорта).
 
-`ltrim(str)` -- убирает пробелы слева у str, недоступна вне модуля (нет экспорта)
-+ **str** --
+`ltrim(str)` -- убирает пробелы слева в строке - str, недоступна вне модуля (нет экспорта).
 
-`fieldsLength(fields)` -- ,недоступна вне модуля (нет экспорта)
+`fieldsLength(fields)` -- ,недоступна вне модуля (нет экспорта).
 + **fields** --
 
-`tagFromNumbers(group, element)` -- возвращает экземпляр Tag, недоступна вне модуля (нет экспорта)
-+ **group** -- числовое значение номера группы
-+ **element** -- числовое значение номера элемента
+`tagFromNumbers(group, element)` -- возвращает экземпляр Tag, недоступна вне модуля (нет экспорта).
++ **group** -- числовое значение (hex) номера группы
++ **element** -- числовое значение (hex) номера элемента
 
 `readTag(stream)` -- возвращает Tag, последовательно читает два значение C.TYPE_UINT16 из представленного
 stream экземпляра потока чтения, недоступна вне модуля (нет экспорта).
 + **stream** -- поток чтения.
 
 `parseElements(stream, syntax)` --
-+ **stream** --
++ **stream** -- поток чтения содержащий [Data Set]
 + **syntax** --
-
-`` --
-+ **** --
-+ **** --
-
-`` --
-+ **** --
-+ **** --
-
-
 
 
 
 ```js
 // Классы модуля
+class Tag{...}
+
 class ValueRepresentation{...}
 
 
@@ -378,6 +368,42 @@ class UniversalResource   extends ValueRepresentation
 class UnknownValue        extends ValueRepresentation
 class OtherWordString     extends ValueRepresentation
 ```
+```js
+class Tag
+```
+```js
+    constructor(value) {
+        this.value = value;
+    }
+```
+
+`toString()` -- возвращает значение тега в виде строки.
+
+`is(t)` -- возвращает численное значение тега.
+
+`group()` --  возвращает численное значение номера группы тега.
+
+`element()` -- возвращает численное значение номера элемента тега.
+
+```js
+class ValueRepresentation
+```
+```js
+    constructor(type) {
+        this.type = type;
+        this.multi = false;
+    }
+```
+
+`read(stream, length, syntax)`  --
+
+`readBytes(stream, length)` --
+
+`readNullPaddedString(stream, length)` --
+
+`getFields(fields)` --
+
+
 
 
 Раздел в разработке...

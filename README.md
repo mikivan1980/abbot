@@ -231,6 +231,8 @@ var F = require('./Field');
 
 var stream = new RW.WriteStream();
 
+
+var n = new F.UInt32Field(2378410);
 var h = new F.HexField('3f');
 var s = new F.StringField('Hello world !');
 
@@ -242,13 +244,15 @@ h.write(stream);
 h.write(stream);
 s.write(stream);
 h.write(stream);
+n.write(stream);
+h.write(stream);
 
 console.log(stream.buffer());
 
 // Вывод:
 //-command prompt/> Type h is 2
 //-command prompt/> <Buffer >
-//-command prompt/> <Buffer 3f 3f 48 65 6c 6c 6f 20 77 6f 72 6c 64 20 21 3f>
+//-command prompt/> <Buffer 3f 3f 48 65 6c 6c 6f 20 77 6f 72 6c 64 20 21 3f 00 24 4a aa 3f>
 ```
 
 Метод write родителя в качестве аргумента требует поток записи и в теле вызывает метод write объекта поток записи.

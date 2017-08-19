@@ -47,9 +47,10 @@ var stream = new RW.WriteStream();
 
 //console.log('length buffer of stream_to_write: ' + stream_to_write.defaultBufferSize + '\n');
 
-console.log(stream.buffer());
 
+var n = new F.UInt32Field(2378410);
 var h = new F.HexField('3f');
+var s = new F.StringField('Hello world !');
 
 ////если ввести '0x3f' то h будет определена как строка и во втором случае не пойдет в буфер, нет вывода об ошибке
 //console.log('true to stream:  ' + (new F.HexField('3f')).value);
@@ -58,15 +59,17 @@ var h = new F.HexField('3f');
 
 console.log('Type h is ' + h.type);
 
-var s = new F.StringField('Hello world !');
+console.log(stream.buffer());
 
 h.write(stream);
 h.write(stream);
 s.write(stream);
 h.write(stream);
+n.write(stream);
+h.write(stream);
 
-console.log(stream.offset);
-console.log(stream.contentSize);
+//console.log(stream.offset);
+//console.log(stream.contentSize);
 
 console.log(stream.buffer());
 

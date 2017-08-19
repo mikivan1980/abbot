@@ -105,19 +105,26 @@ var DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm', 'ascii') );
 
 DataSet.increment( 128 + 4 );
 
-var el = new D.DataElement();
 
 
 //console.log(  DataSet.more(10).buffer().toString('hex') );
-
-console.log(  DataSet.read(C.TYPE_UINT16)  );
-
+//console.log(  DataSet.read(C.TYPE_UINT16)  );
 //console.log(  DataSet.more(10).rawBuffer.slice(0,7));
-
-console.log( DataSet.read( C.TYPE_UINT16) );
+//console.log( DataSet.read( C.TYPE_UINT16) );
 
 
 console.log('endian = = ' + DataSet.endian );
+
+
+DataSet.setEndian(C.LITTLE_ENDIAN);
+
+
+var el = new D.DataElement();
+el.setSyntax(C.EXPLICIT_LITTLE_ENDIAN);
+//el.readBytes(DataSet);
+
+
+console.log(el);
 
 D.readElements( DataSet ) ;//C.EXPLICIT_LITTLE_ENDIAN);
 

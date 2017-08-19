@@ -895,15 +895,17 @@ function readElements(stream, syntax) {
   if (stream.end()) return false;
 
   let oldEndian = stream.endian;
-  stream.setEndian(this.endian);
-console.log('@@@@@@@@@@@@@----' +  stream.size() + '    -    ' + stream.offset  + '    -    ' + stream.endian + '   ^   ' + this.endian);
-//console.log('----------------' + C.TYPE_UINT16 );
-  let group = stream.read(C.TYPE_UINT16),
+
+//вставить выбор есть VR или нет. т.е. определять от syntax 
+
+  stream.setEndian(C.LITTLE_ENDIAN);
+
+  let group   = stream.read(C.TYPE_UINT16),
       element = stream.read(C.TYPE_UINT16),
-      tag = new Tag((group << 16) | element),
-      length = stream.read(C.TYPE_UINT32);
-console.log('++++++++++++++++++++++++++++++++++++++');
-  console.log(tag.toString(), length);
+      tag     = new Tag((group << 16) | element),
+      length  = stream.read(C.TYPE_UINT32);
+
+  console.log( tag.toString(), length);
   stream.setEndian(oldEndian);
 }
 module.exports.readElements = readElements;

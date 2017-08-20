@@ -30,7 +30,8 @@ class Tag {
     this.value = value;
   }
 
-  toString() {
+  toString(view) {
+    if(view == 1) return "0x" + paddingLeft("0000", this.group().toString(16)) + paddingLeft("0000", this.element().toString(16));
     return "(" + paddingLeft("0000", this.group().toString(16)) + "," +
            paddingLeft("0000", this.element().toString(16)) + ")";
   }
@@ -832,12 +833,13 @@ module.exports.elementByType = elementByType;
 
 
 //export
-function elementDataByTag(tag) {
-  let nk = DicomElements.dicomNDict[tag];
+function elementDataByTag(Tag) {
+//  console.log('tag ====' + Tag.toString(1) + ' ----------> '+ DicomElements.dicomNDict[Tag.value].keyword);
+  let nk = DicomElements.dicomNDict[Tag.value];
   if (nk) {
     return nk;
   }
-  throw ("Unrecognized tag " + (tag >>> 0).toString(16));
+  else return { vr: null, vm : null, keyword : null};//console.log("Teg "+  Tag.toString() +" is not defined");
 }
 module.exports.elementDataByTag = elementDataByTag;
 
@@ -896,7 +898,7 @@ function readElements(stream, syntax) {
 
   let oldEndian = stream.endian;
 
-//вставить выбор есть VR или нет. т.е. определять от syntax 
+//вставить выбор есть VR или нет. т.е. определять от syntax
 
   stream.setEndian(C.LITTLE_ENDIAN);
 
@@ -972,9 +974,16 @@ class DataElement {
     let group = stream.read(C.TYPE_UINT16),
         element = stream.read(C.TYPE_UINT16),
         tag = tagFromNumbers(group, element);
+    //console.log(group + '  ' + element +' '+ tag.toString(1) +'  '+ tag.toString());
 
-    let length = null, vr = null, edata = elementDataByTag(tag.value),
-        vm = edata.vm;
+
+
+    let length = null,
+        vr = null,
+        edata = elementDataByTag(tag);
+
+if( !(edata.vm == "null") ){
+    let vm = edata.vm;
 
     if (this.implicit) {
       length = stream.read(C.TYPE_UINT32);
@@ -1001,7 +1010,7 @@ class DataElement {
     } else {
       this.value = this.vr.read(stream, length, this.syntax);
     }
-
+}
     stream.setEndian(oldEndian);
   }
 

@@ -103,7 +103,7 @@ const fs = require('fs');
 
 var DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm', 'ascii') );
 
-DataSet.increment( 128 + 4 );
+DataSet.increment( 128 + 4 );//+254);
 
 
 
@@ -121,12 +121,12 @@ DataSet.setEndian(C.LITTLE_ENDIAN);
 
 var el = new D.DataElement();
 el.setSyntax(C.EXPLICIT_LITTLE_ENDIAN);
-//el.readBytes(DataSet);
+el.readBytes(DataSet);
 
 
 console.log(el);
 
-D.readElements( DataSet ) ;//C.EXPLICIT_LITTLE_ENDIAN);
+//D.readElements( DataSet ) ;//C.EXPLICIT_LITTLE_ENDIAN);
 
 
 

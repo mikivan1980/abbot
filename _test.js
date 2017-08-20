@@ -7,10 +7,17 @@
 //
 // //------------------------------------------------------------------------------
 // //Подключаем следующий модуль elements_data.js - словарь dicom, том 6
-// var El = require('./elements_data');
+ //var El = require('./elements_data');
+  var El = require('./dictionary');
 //
-// console.log(El.dicomNDict[0x00080020]);
-// console.log(El.dicomVDict["002808x4"]);
+console.log(  El.dicomNDict['0008']['0006']['vr']  );
+console.log(  El.dicomNDict['0008']['0006'].vr );
+console.log(  El.dicomNDict['0008']['0006'].vr  );
+
+console.log(  El.dicomNDict['3008']['0047']  );
+//console.log(El.dicomNDict[0x00080020]);
+//console.log(El.dicomNDict['2306']);
+//console.log(El.dicomVDict["002808x4"]);
 //
 // // //поиграем с типами данными машины и их представлении в буфере для диком
 // var RW = require('./RWStream');

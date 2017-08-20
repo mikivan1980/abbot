@@ -641,8 +641,9 @@ class TimeValue extends ValueRepresentation {
   }
 
   getFields(date) {
-    let hour = paddingLeft("00", date.getHours()),
-        minute = paddingLeft("00", date.getMinutes()), second = paddingLeft("00", date.getSeconds()),
+    let hour        = paddingLeft("00", date.getHours()),
+        minute      = paddingLeft("00", date.getMinutes()),
+        second      = paddingLeft("00", date.getSeconds()),
         millisecond = paddingLeft("000", date.getMilliseconds());
     return super.getFields([new F.StringField(hour + minute + second + "." + millisecond)]);
   }

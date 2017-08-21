@@ -134,10 +134,12 @@ that are independent of any encoding scheme.
 ```js
 // Пример реализации записей словаря в модуле
 var dicomNDict = {...
-0x0008001B : { vr : "UI", vm : C.VM_SINGLE, keyword : "OriginalSpecializedSOPClassUID"},
-0x00080020 : { vr : "DA", vm : C.VM_SINGLE, keyword : "StudyDate"},
-0x00080021 : { vr : "DA", vm : C.VM_SINGLE, keyword : "SeriesDate"},
-0x00080022 : { vr : "DA", vm : C.VM_SINGLE, keyword : "AcquisitionDate"},
+var dicomNDict = {
+    '0008' : {
+              '0001' : { vr : "UL", vm : C.VM_SINGLE,   keyword : "LengthToEnd"},
+              '0005' : { vr : "CS", vm : C.VM_1N,       keyword : "SpecificCharacterSet"},
+              '0006' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "LanguageCodeSequence"},
+              '0008' : { vr : "CS", vm : C.VM_2N,       keyword : "ImageType"},
 ...}
 
 
@@ -153,15 +155,22 @@ var dicomVDict = {...
 
 ```js
 // our_test.js
-var el = require('./elements_data');
+onsole.log(  El.dicomNDict['0008']['0006'] );
 
-console.log(el.dicomNDict[0x00080020]);
-console.log(el.dicomVDict["002808x4"]);
+console.log(  El.dicomNDict['0008']['0006']['vr'] );
+console.log(  El.dicomNDict['0008']['0006'].vr    );
+
+console.log(  El.dicomNDict['0008']['0006']['keyword'] );
+console.log(  El.dicomNDict['0008']['0006'].keyword  );
 
 
 // Вывод:
-//-command prompt/> { vr: 'DA', vm: 1, keyword: 'StudyDate' }
-//-command prompt/> { vr: 'US', vm: 1, keyword: 'BitsForCodeWord' }
+//-command prompt/> { vr: 'SQ', vm: 1, keyword: 'LanguageCodeSequence' }
+//-command prompt/> SQ
+//-command prompt/> SQ
+//-command prompt/> LanguageCodeSequence
+//-command prompt/> LanguageCodeSequence
+
 ```
 
 [Вернуться к содержанию.](#content)

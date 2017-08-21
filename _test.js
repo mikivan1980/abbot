@@ -8,13 +8,19 @@
 // //------------------------------------------------------------------------------
 // //Подключаем следующий модуль elements_data.js - словарь dicom, том 6
  //var El = require('./elements_data');
-  var El = require('./dictionary');
-//
-console.log(  El.dicomNDict['0008']['0006']['vr']  );
-console.log(  El.dicomNDict['0008']['0006'].vr );
-console.log(  El.dicomNDict['0008']['0006'].vr  );
+var El = require('./dictionary');
 
-console.log(  El.dicomNDict['3008']['0047']  );
+console.log(  El.dicomNDict['0008']['0006'] );
+
+console.log(  El.dicomNDict['0008']['0006']['vr'] );
+console.log(  El.dicomNDict['0008']['0006'].vr    );
+
+console.log(  El.dicomNDict['0008']['0006']['keyword'] );
+console.log(  El.dicomNDict['0008']['0006'].keyword  );
+
+//console.log(  El.dicomNDict['0008']['0006'].vr  );
+
+//console.log(  El.dicomNDict['3008']['0047']  );
 //console.log(El.dicomNDict[0x00080020]);
 //console.log(El.dicomNDict['2306']);
 //console.log(El.dicomVDict["002808x4"]);
@@ -100,17 +106,17 @@ console.log(  El.dicomNDict['3008']['0047']  );
 
 //Когда  будем dicom файл помещать в raw Buffer
 
-var C = require('./constants');
-var RW = require('./RWStream');
-var D = require('./Data');
+//var C = require('./constants');
+//var RW = require('./RWStream');
+//var D = require('./Data');
 
-const fs = require('fs');
+//const fs = require('fs');
 
 //var DataSet = fs.readFileSync('_test_mr.dcm', 'utf8');
 
-var DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm', 'ascii') );
+//var DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm', 'ascii') );
 
-DataSet.increment( 128 + 4 );//+254);
+//DataSet.increment( 128 + 4 );//+254);
 
 
 
@@ -120,18 +126,18 @@ DataSet.increment( 128 + 4 );//+254);
 //console.log( DataSet.read( C.TYPE_UINT16) );
 
 
-console.log('endian = = ' + DataSet.endian );
+//console.log('endian = = ' + DataSet.endian );
 
 
-DataSet.setEndian(C.LITTLE_ENDIAN);
+//DataSet.setEndian(C.LITTLE_ENDIAN);
 
 
-var el = new D.DataElement();
-el.setSyntax(C.EXPLICIT_LITTLE_ENDIAN);
-el.readBytes(DataSet);
+//var el = new D.DataElement();
+//el.setSyntax(C.EXPLICIT_LITTLE_ENDIAN);
+//el.readBytes(DataSet);
 
 
-console.log(el);
+//console.log(el);
 
 //D.readElements( DataSet ) ;//C.EXPLICIT_LITTLE_ENDIAN);
 
@@ -150,7 +156,7 @@ console.log(el);
 
 //console.log(stream.buffer());
 
-console.log(DataSet.size());
+//console.log(DataSet.size());
 
 //console.log(DataSet.buffer().toString());
 

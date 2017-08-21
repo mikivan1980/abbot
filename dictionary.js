@@ -1,4 +1,4 @@
-// Data Dictionary, DICOM std. Vol 6.
+/* Data Dictionary, DICOM std. Vol 6.*/
 
 var C = require('./constants');
 
@@ -906,12 +906,12 @@ var dicomNDict = {
               '9310' : { vr : "FD", vm : C.VM_SINGLE,   keyword : "TableFeedPerRotation"},
               '9311' : { vr : "FD", vm : C.VM_SINGLE,   keyword : "SpiralPitchFactor"},
               '9312' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "CTGeometrySequence"},
-              '9313' : { vr : "FD", vm : C.VM_THREE, keyword : "DataCollectionCenterPatient"},
+              '9313' : { vr : "FD", vm : C.VM_THREE,    keyword : "DataCollectionCenterPatient"},
               '9314' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "CTReconstructionSequence"},
               '9315' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "ReconstructionAlgorithm"},
               '9316' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "ConvolutionKernelGroup"},
               '9317' : { vr : "FD", vm : C.VM_TWO,      keyword : "ReconstructionFieldOfView"},
-              '9318' : { vr : "FD", vm : C.VM_THREE, keyword : "ReconstructionTargetCenterPatient"},
+              '9318' : { vr : "FD", vm : C.VM_THREE,    keyword : "ReconstructionTargetCenterPatient"},
               '9319' : { vr : "FD", vm : C.VM_SINGLE,   keyword : "ReconstructionAngle"},
               '9320' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "ImageFilter"},
               '9321' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "CTExposureSequence"},
@@ -938,7 +938,7 @@ var dicomNDict = {
               '9345' : { vr : "FD", vm : C.VM_SINGLE,   keyword : "CTDIvol"},
               '9346' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "CTDIPhantomTypeCodeSequence"},
               '9351' : { vr : "FL", vm : C.VM_SINGLE,   keyword : "CalciumScoringMassFactorPatient"},
-              '9352' : { vr : "FL", vm : C.VM_THREE, keyword : "CalciumScoringMassFactorDevice"},
+              '9352' : { vr : "FL", vm : C.VM_THREE,    keyword : "CalciumScoringMassFactorDevice"},
               '9353' : { vr : "FL", vm : C.VM_SINGLE,   keyword : "EnergyWeightingFactor"},
               '9360' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "CTAdditionalXRaySourceSequence"},
               '9401' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ProjectionPixelCalibrationSequence"},
@@ -970,7 +970,7 @@ var dicomNDict = {
               '9439' : { vr : "SS", vm : C.VM_SINGLE,   keyword : "ExposureControlSensingRegionLowerHorizontalEdge"},
               '9440' : { vr : "SS", vm : C.VM_TWO,      keyword : "CenterOfCircularExposureControlSensingRegion"},
               '9441' : { vr : "US", vm : C.VM_SINGLE,   keyword : "RadiusOfCircularExposureControlSensingRegion"},
-              '9442' : { vr : "SS", vm : C.VM_2N, keyword : "VerticesOfThePolygonalExposureControlSensingRegion"},
+              '9442' : { vr : "SS", vm : C.VM_2N,       keyword : "VerticesOfThePolygonalExposureControlSensingRegion"},
               '9447' : { vr : "FL", vm : C.VM_SINGLE,   keyword : "ColumnAngulationPatient"},
               '9449' : { vr : "FL", vm : C.VM_SINGLE,   keyword : "BeamAngle"},
               '9451' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "FrameDetectorParametersSequence"},
@@ -2015,7 +2015,7 @@ var dicomNDict = {
               '0013' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ProductParameterSequence"},
               '0019' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "SubstanceAdministrationParameterSequence"}
               },
-     '0046' : {
+    '0046' : {
               '0012' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "LensDescription"},
               '0014' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "RightLensSequence"},
               '0015' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "LeftLensSequence"},
@@ -2145,7 +2145,7 @@ var dicomNDict = {
               '0039' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "InterpolationType"},
               '003A' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "RefractiveIndexApplied"}
               },
-     '0054': {
+    '0054': {
               '0010' : { vr : "US", vm : C.VM_1N,       keyword : "EnergyWindowVector"},
               '0011' : { vr : "US", vm : C.VM_SINGLE,   keyword : "NumberOfEnergyWindows"},
               '0012' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "EnergyWindowInformationSequence"},
@@ -2227,7 +2227,7 @@ var dicomNDict = {
               '1400' : { vr : "CS", vm : C.VM_1N,       keyword : "CountsIncluded"},
               '1401' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "DeadTimeCorrectionFlag"}
               },
-     '0060' : {
+    '0060' : {
               '3000' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "HistogramSequence"},
               '3002' : { vr : "US", vm : C.VM_SINGLE,   keyword : "HistogramNumberOfBins"},
               '3004' : { vr : "US", vm : C.VM_SINGLE,   keyword : "HistogramFirstBinValue"},
@@ -2236,7 +2236,7 @@ var dicomNDict = {
               '3010' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "HistogramExplanation"},
               '3020' : { vr : "UL", vm : C.VM_1N,       keyword : "HistogramData"}
               },
-     '0062' : {
+    '0062' : {
               '0001' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "SegmentationType"},
               '0002' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "SegmentSequence"},
               '0003' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "SegmentedPropertyCategoryCodeSequence"},
@@ -2253,7 +2253,7 @@ var dicomNDict = {
               '000F' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "SegmentedPropertyTypeCodeSequence"},
               '0010' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "SegmentationFractionalType"}
               },
-  '0064' : {
+    '0064' : {
               '0002' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "DeformableRegistrationSequence"},
               '0003' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "SourceFrameOfReferenceUID"},
               '0005' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "DeformableRegistrationGridSequence"},
@@ -2263,7 +2263,7 @@ var dicomNDict = {
               '000F' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "PreDeformationMatrixRegistrationSequence"},
               '0010' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "PostDeformationMatrixRegistrationSequence"}
               },
-  '0066' : {
+    '0066' : {
               '0001' : { vr : "UL", vm : C.VM_SINGLE,   keyword : "NumberOfSurfaces"},
               '0002' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "SurfaceSequence"},
               '0003' : { vr : "UL", vm : C.VM_SINGLE,   keyword : "SurfaceNumber"},
@@ -2310,7 +2310,7 @@ var dicomNDict = {
               '0035' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "SurfaceProcessingAlgorithmIdentificationSequence"},
               '0036' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "AlgorithmName"}
               },
-  '0068' : {
+    '0068' : {
               '6210' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "ImplantSize"},
               '6221' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "ImplantTemplateVersion"},
               '6222' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReplacedImplantTemplateSequence"},
@@ -2382,7 +2382,7 @@ var dicomNDict = {
               '6610' : { vr : "FD", vm : C.VM_THREE,    keyword : "ThreeDPlaneOrigin"},
               '6620' : { vr : "FD", vm : C.VM_THREE,    keyword : "ThreeDPlaneNormal"}
               },
-  '0070' : {
+    '0070' : {
               '0001' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "GraphicAnnotationSequence"},
               '0002' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "GraphicLayer"},
               '0003' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "BoundingBoxAnnotationUnits"},
@@ -2490,7 +2490,7 @@ var dicomNDict = {
               '0404' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedSpatialRegistrationSequence"},
               '0405' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "BlendingPosition"}
               },
-  '0072' : {
+    '0072' : {
               '0002' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "HangingProtocolName"},
               '0004' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "HangingProtocolDescription"},
               '0006' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "HangingProtocolLevel"},
@@ -2599,7 +2599,7 @@ var dicomNDict = {
               '0717' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "DisplaySetHorizontalJustification"},
               '0718' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "DisplaySetVerticalJustification"}
               },
-  '0074' : {
+    '0074' : {
               '0120' : { vr : "FD", vm : C.VM_SINGLE,   keyword : "ContinuationStartMeterset"},
               '0121' : { vr : "FD", vm : C.VM_SINGLE,   keyword : "ContinuationEndMeterset"},
               '1000' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "ProcedureStepState"},
@@ -2659,7 +2659,7 @@ var dicomNDict = {
               '1338' : { vr : "FD", vm : C.VM_SINGLE,   keyword : "DoubleExposureMeterset"},
               '133A' : { vr : "FD", vm : C.VM_FOUR,     keyword : "DoubleExposureFieldDelta"}
               },
-  '0076' : {
+    '0076' : {
               '0001' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "ImplantAssemblyTemplateName"},
               '0003' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "ImplantAssemblyTemplateIssuer"},
               '0006' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "ImplantAssemblyTemplateVersion"},
@@ -2684,7 +2684,7 @@ var dicomNDict = {
               '00B0' : { vr : "US", vm : C.VM_SINGLE,   keyword : "Component2ReferencedMatingFeatureSetID"},
               '00C0' : { vr : "US", vm : C.VM_SINGLE,   keyword : "Component2ReferencedMatingFeatureID"}
               },
-  '0078' : {
+    '0078' : {
               '0001' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "ImplantTemplateGroupName"},
               '0010' : { vr : "ST", vm : C.VM_SINGLE,   keyword : "ImplantTemplateGroupDescription"},
               '0020' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "ImplantTemplateGroupIssuer"},
@@ -2704,7 +2704,7 @@ var dicomNDict = {
               '00B6' : { vr : "US", vm : C.VM_SINGLE,   keyword : "ReferencedImplantTemplateGroupMemberID"},
               '00B8' : { vr : "US", vm : C.VM_SINGLE,   keyword : "ImplantTemplateGroupVariationDimensionRank"}
               },
-  '0088' : {
+    '0088' : {
               '0130' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "StorageMediaFileSetID"},
               '0140' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "StorageMediaFileSetUID"},
               '0200' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "IconImageSequence"},
@@ -2713,13 +2713,13 @@ var dicomNDict = {
               '0910' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "TopicAuthor"},
               '0912' : { vr : "LO", vm : C.VM_1_32,     keyword : "TopicKeywords"}
               },
-  '0100' : {
+    '0100' : {
               '0410' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "SOPInstanceStatus"},
               '0420' : { vr : "DT", vm : C.VM_SINGLE,   keyword : "SOPAuthorizationDateTime"},
               '0424' : { vr : "LT", vm : C.VM_SINGLE,   keyword : "SOPAuthorizationComment"},
               '0426' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "AuthorizationEquipmentCertificationNumber"}
               },
-  '0400' : {
+    '0400' : {
               '0005' : { vr : "US", vm : C.VM_SINGLE,   keyword : "MACIDNumber"},
               '0010' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "MACCalculationTransferSyntaxUID"},
               '0015' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "MACAlgorithm"},
@@ -2744,8 +2744,8 @@ var dicomNDict = {
               '0563' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "ModifyingSystem"},
               '0564' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "SourceOfPreviousValues"},
               '0565' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "ReasonForTheAttributeModification"}
-            },
-  '2000' : {
+              },
+    '2000' : {
               '0010' : { vr : "IS", vm : C.VM_SINGLE,   keyword : "NumberOfCopies"},
               '001E' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "PrinterConfigurationSequence"},
               '0020' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "PrintPriority"},
@@ -2768,7 +2768,7 @@ var dicomNDict = {
               '0500' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedFilmBoxSequence"},
               '0510' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedStoredPrintSequence"}
               },
-  '2010' : {
+    '2010' : {
               '0010' : { vr : "ST", vm : C.VM_SINGLE,   keyword : "ImageDisplayFormat"},
               '0030' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "AnnotationDisplayFormatID"},
               '0040' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "FilmOrientation"},
@@ -2796,7 +2796,7 @@ var dicomNDict = {
               '0510' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedImageBoxSequence"},
               '0520' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedBasicAnnotationBoxSequence"}
               },
-  '2020' : {
+    '2020' : {
               '0010' : { vr : "US", vm : C.VM_SINGLE,   keyword : "ImageBoxPosition"},
               '0020' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "Polarity"},
               '0030' : { vr : "DS", vm : C.VM_SINGLE,   keyword : "RequestedImageSize"},
@@ -2809,11 +2809,11 @@ var dicomNDict = {
               '0130' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedImageOverlayBoxSequence"},
               '0140' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedVOILUTBoxSequence"}
               },
-  '2030' : {
+    '2030' : {
               '0010' : { vr : "US", vm : C.VM_SINGLE,   keyword : "AnnotationPosition"},
               '0020' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "TextString"}
               },
-  '2040' : {
+    '2040' : {
               '0010' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedOverlayPlaneSequence"},
               '0011' : { vr : "US", vm : C.VM_1_99,     keyword : "ReferencedOverlayPlaneGroups"},
               '0020' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "OverlayPixelDataSequence"},
@@ -2827,12 +2827,12 @@ var dicomNDict = {
               '0100' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "ThresholdDensity"},
               '0500' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedImageBoxSequenceRetired"}
               },
-  '2050' : {
+    '2050' : {
               '0010' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "PresentationLUTSequence"},
               '0020' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "PresentationLUTShape"},
               '0500' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedPresentationLUTSequence"}
               },
-  '2100' : {
+    '2100' : {
               '0010' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "PrintJobID"},
               '0020' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "ExecutionStatus"},
               '0030' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "ExecutionStatusInfo"},
@@ -2844,18 +2844,18 @@ var dicomNDict = {
               '0170' : { vr : "IS", vm : C.VM_SINGLE,   keyword : "NumberOfFilms"},
               '0500' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedPrintJobSequencePullStoredPrint"}
               },
-  '2110' : {
+    '2110' : {
               '0010' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "PrinterStatus"},
               '0020' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "PrinterStatusInfo"},
               '0030' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "PrinterName"},
               '0099' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "PrintQueueID"}
               },
-  '2120' : {
+    '2120' : {
               '0010' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "QueueStatus"},
               '0050' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "PrintJobDescriptionSequence"},
               '0070' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedPrintJobSequence"}
               },
-  '2130' : {
+    '2130' : {
               '0010' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "PrintManagementCapabilitiesSequence"},
               '0015' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "PrinterCharacteristicsSequence"},
               '0030' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "FilmBoxContentSequence"},
@@ -2866,7 +2866,7 @@ var dicomNDict = {
               '00A0' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ProposedStudySequence"},
               '00C0' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "OriginalImageSequence"}
               },
-  '2200' : {
+    '2200' : {
               '0001' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "LabelUsingInformationExtractedFromInstances"},
               '0002' : { vr : "UT", vm : C.VM_SINGLE,   keyword : "LabelText"},
               '0003' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "LabelStyleSelection"},
@@ -2884,7 +2884,7 @@ var dicomNDict = {
               '000F' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "AllowLossyCompression"},
               '0020' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "RequestPriority"}
               },
-  '3002' : {
+    '3002' : {
               '0002' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "RTImageLabel"},
               '0003' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "RTImageName"},
               '0004' : { vr : "ST", vm : C.VM_SINGLE,   keyword : "RTImageDescription"},
@@ -2911,7 +2911,7 @@ var dicomNDict = {
               '0051' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "FluenceMode"},
               '0052' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "FluenceModeID"}
               },
-  '3004' : {
+    '3004' : {
               '0001' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "DVHType"},
               '0002' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "DoseUnits"},
               '0004' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "DoseType"},
@@ -2936,7 +2936,7 @@ var dicomNDict = {
               '0072' : { vr : "DS", vm : C.VM_SINGLE,   keyword : "DVHMaximumDose"},
               '0074' : { vr : "DS", vm : C.VM_SINGLE,   keyword : "DVHMeanDose"}
               },
-  '3006' : {
+    '3006' : {
               '0002' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "StructureSetLabel"},
               '0004' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "StructureSetName"},
               '0006' : { vr : "ST", vm : C.VM_SINGLE,   keyword : "StructureSetDescription"},
@@ -2987,7 +2987,7 @@ var dicomNDict = {
               '00C6' : { vr : "DS", vm : C.VM_16,       keyword : "FrameOfReferenceTransformationMatrix"},
               '00C8' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "FrameOfReferenceTransformationComment"}
               },
-  '3008' : {
+    '3008' : {
               '0010' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "MeasuredDoseReferenceSequence"},
               '0012' : { vr : "ST", vm : C.VM_SINGLE,   keyword : "MeasuredDoseDescription"},
               '0014' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "MeasuredDoseType"},
@@ -3080,7 +3080,7 @@ var dicomNDict = {
               '0250' : { vr : "DA", vm : C.VM_SINGLE,   keyword : "TreatmentDate"},
               '0251' : { vr : "TM", vm : C.VM_SINGLE,   keyword : "TreatmentTime"}
               },
-  '300A' : {
+    '300A' : {
               '0002' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "RTPlanLabel"},
               '0003' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "RTPlanName"},
               '0004' : { vr : "ST", vm : C.VM_SINGLE,   keyword : "RTPlanDescription"},
@@ -3426,7 +3426,7 @@ var dicomNDict = {
               '0435' : { vr : "FL", vm : C.VM_SINGLE,   keyword : "ApplicatorOpeningY"},
               '0436' : { vr : "FL", vm : C.VM_SINGLE,   keyword : "SourceToApplicatorMountingPositionDistance"}
               },
-  '300C' : {
+    '300C' : {
               '0002' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedRTPlanSequence"},
               '0004' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedBeamSequence"},
               '0006' : { vr : "IS", vm : C.VM_SINGLE,   keyword : "ReferencedBeamNumber"},
@@ -3459,17 +3459,17 @@ var dicomNDict = {
               '0102' : { vr : "IS", vm : C.VM_SINGLE,   keyword : "ReferencedLateralSpreadingDeviceNumber"},
               '0104' : { vr : "IS", vm : C.VM_SINGLE,   keyword : "ReferencedRangeModulatorNumber"}
               },
-  '300E' : {
+    '300E' : {
               '0002' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "ApprovalStatus"},
               '0004' : { vr : "DA", vm : C.VM_SINGLE,   keyword : "ReviewDate"},
               '0005' : { vr : "TM", vm : C.VM_SINGLE,   keyword : "ReviewTime"},
               '0008' : { vr : "PN", vm : C.VM_SINGLE,   keyword : "ReviewerName"}
               },
-  '4000' : {
+    '4000' : {
               '0010' : { vr : "LT", vm : C.VM_SINGLE,   keyword : "Arbitrary"},
               '4000' : { vr : "LT", vm : C.VM_SINGLE,   keyword : "TextComments"}
               },
-  '4008' : {
+    '4008' : {
               '0040' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "ResultsID"},
               '0042' : { vr : "LO", vm : C.VM_SINGLE,   keyword : "ResultsIDIssuer"},
               '0050' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "ReferencedInterpretationSequence"},
@@ -3499,7 +3499,7 @@ var dicomNDict = {
               '0300' : { vr : "ST", vm : C.VM_SINGLE,   keyword : "Impressions"},
               '4000' : { vr : "ST", vm : C.VM_SINGLE,   keyword : "ResultsComments"}
               },
-  '4010' : {
+    '4010' : {
               '0001' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "LowEnergyDetectors"},
               '0002' : { vr : "CS", vm : C.VM_SINGLE,   keyword : "HighEnergyDetectors"},
               '0004' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "DetectorGeometrySequence"},
@@ -3570,14 +3570,14 @@ var dicomNDict = {
               '1069' : { vr : "FL", vm : C.VM_SINGLE,   keyword : "TotalProcessingTime"},
               '106C' : { vr : "OB", vm : C.VM_SINGLE,   keyword : "DetectorCalibrationData"}
               },
-  '4FFE' : {
+    '4FFE' : {
               '0001' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "MACParametersSequence"}
               },
-  '5200' : {
+    '5200' : {
               '9229' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "SharedFunctionalGroupsSequence"},
               '9230' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "PerFrameFunctionalGroupsSequence"}
               },
-  '5400' : {
+    '5400' : {
               '0100' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "WaveformSequence"},
               '0110' : { vr : "OB", vm : C.VM_SINGLE,   keyword : "ChannelMinimumValue"},
               '0112' : { vr : "OB", vm : C.VM_SINGLE,   keyword : "ChannelMaximumValue"},
@@ -3586,28 +3586,28 @@ var dicomNDict = {
               '100A' : { vr : "OB", vm : C.VM_SINGLE,   keyword : "WaveformPaddingValue"},
               '1010' : { vr : "OB", vm : C.VM_SINGLE,   keyword : "WaveformData"}
               },
-  '5600' : {
+    '5600' : {
               '0010' : { vr : "OF", vm : C.VM_SINGLE,   keyword : "FirstOrderPhaseCorrectionAngle"},
               '0020' : { vr : "OF", vm : C.VM_SINGLE,   keyword : "SpectroscopyData"}
               },
-  '7FE0' : {
+    '7FE0' : {
               '0010' : { vr : "OW", vm : C.VM_SINGLE,   keyword : "PixelData"},
               '0020' : { vr : "OW", vm : C.VM_SINGLE,   keyword : "CoefficientsSDVN"},
               '0030' : { vr : "OW", vm : C.VM_SINGLE,   keyword : "CoefficientsSDHN"},
               '0040' : { vr : "OW", vm : C.VM_SINGLE,   keyword : "CoefficientsSDDN"}
               },
- 'FFFA' : {
+    'FFFA' : {
               'FFFA' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "DigitalSignaturesSequence"}
               },
- 'FFFC' : {
+    'FFFC' : {
               'FFFC' : { vr : "OB", vm : C.VM_SINGLE,   keyword : "DataSetTrailingPadding"}
               },
- 'FFFE' : {
+    'FFFE' : {
               'E000' : { vr : null, vm : C.VM_SINGLE,   keyword : "Item"},
               'E00D' : { vr : null, vm : C.VM_SINGLE,   keyword : "ItemDelimitationItem"},
               'E0DD' : { vr : null, vm : C.VM_SINGLE,   keyword : "SequenceDelimitationItem"}
               },
-  '0000' : {
+    '0000' : {
               '0000' : { vr : "UL", vm : C.VM_SINGLE,   keyword : "CommandGroupLength"},
               '0002' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "AffectedSOPClassUID"},
               '0003' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "RequestedSOPClassUID"},

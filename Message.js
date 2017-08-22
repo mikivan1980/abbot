@@ -1,4 +1,4 @@
-var C = require('./constants');
+var C = require('./abbot1Constants');
 var D = require('./Data');
 //import * as D from './Data'
 

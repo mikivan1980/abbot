@@ -1,22 +1,22 @@
 //lerning of lib abbot
 
 
-// //Подключаем модуль constants.js
+// //Подключаем модуль abbot1Constants.js
 // var C = require('./constants');
 //
 //
 // //------------------------------------------------------------------------------
 // //Подключаем следующий модуль elements_data.js - словарь dicom, том 6
  //var El = require('./elements_data');
-var El = require('./dictionary');
+const L = require('./abbot2Dictionary'); // L - library
 
-console.log(  El.dicomNDict['0008']['0006'] );
+console.log(  L.dicomDictionary['0008']['0006'] );
 
-console.log(  El.dicomNDict['0008']['0006']['vr'] );
-console.log(  El.dicomNDict['0008']['0006'].vr    );
+console.log(  L.dicomDictionary['0008']['0006']['vr'] );
+console.log(  L.dicomDictionary['0008']['0006'].vr    );
 
-console.log(  El.dicomNDict['0008']['0006']['keyword'] );
-console.log(  El.dicomNDict['0008']['0006'].keyword  );
+console.log(  L.dicomDictionary['0008']['0006']['keyword'] );
+console.log(  L.dicomDictionary['0008']['0006'].keyword  );
 
 //console.log(  El.dicomNDict['0008']['0006'].vr  );
 

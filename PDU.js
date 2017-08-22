@@ -1,5 +1,5 @@
-var C = require('./constants');
-var WriteStream = require('./RWStream').WriteStream;
+var C = require('./abbot1Constants');
+var WriteStream = require('./abbot3Stream').WriteStream;
 var F = require('./Field');
 var readMessage = require('./Message').readMessage;
 //import { WriteStream as WriteStream } from './RWStream';

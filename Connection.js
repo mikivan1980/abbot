@@ -1,6 +1,6 @@
-var C = require('./constants');
+var C = require('./abbot1Constants');
 var P = require('./PDU');
-var ReadStream = require('./RWStream').ReadStream;
+var ReadStream = require('./abbot3Stream').ReadStream;
 var readMessage = require('./Message').readMessage;
 //import * as P from './PDU';
 //import { ReadStream as ReadStream } from './RWStream';

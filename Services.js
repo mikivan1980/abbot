@@ -1,4 +1,4 @@
-var C = require('./constants');
+var C = require('./abbot1Constants');
 var PDataTF = require('./PDU').PDataTF;
 var PresentationDataValueItem = require('./PDU').PresentationDataValueItem;
 var M = require('./Message');

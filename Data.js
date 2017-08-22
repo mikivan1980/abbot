@@ -1,4 +1,4 @@
-var C = require('./constants');
+var C = require('./abbot1Constants');
 var DicomElements = require('./elements_data');
 var F = require('./Field');
 //import * as F from './Field';// нет выражений F. :((

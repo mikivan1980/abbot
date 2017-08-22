@@ -1,5 +1,5 @@
-var C = require('./constants');
-var calcLength = require('./RWStream').calcLength;
+var C = require('./abbot1Constants');
+var calcLength = require('./abbot3Stream').calcLength;
 //import { calcLength as calcLength } from './RWStream';
 
 

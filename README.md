@@ -29,9 +29,9 @@ The Abbot - аббат, служитель в католической церк�
 
 <a id="content"></a>
 ## Содержание [кладовая аббата]
-- [constants.js](#constants)
-- [elements_data.js](#elements)
-- [RWStream.js](#rwstream)
+- [abbot1Constants.js](#constants)
+- [abbot2Dictionary.js](#elements)
+- [abbot3Stream.js](#rwstream)
 - [Field.js](#field)
 - [Data.js](#data)
 - [Message.js](#message)
@@ -41,7 +41,7 @@ The Abbot - аббат, служитель в католической церк�
 
 
 <a id="constants"></a>
-## constants.js
+## abbot1Constants.js
 Модуль групп мульти - констант, определение (выбор) значения на этапе исполнения с помощью __switch__
 реализуется выполнением соответствующего кода в __case__. Представляет однотипное ветвление по значению.
 
@@ -97,7 +97,7 @@ console.log( calcLength(C.TYPE_INT8) ); // выбора значения мул�
 
 
 <a id="elements"></a>
-## elements_data.js
+## abbot2Dictionary.js
 Модуль реализует словарь данных стандарта DICOM 3.0, часть PS3.6 - Data Dictionary,
 содержит реестр всех DICOM элементов данных [Data Element] и всех уникальных идентификаторов [UID] DICOM,
 которые определены в стандарте DICOM. Правильно структурированное множество [Data Set] элементов данных
@@ -133,21 +133,22 @@ that are independent of any encoding scheme.
 
 ```js
 // Пример реализации записей словаря в модуле
-var dicomNDict = {...
-var dicomNDict = {
+let dicomDictionary = {
     '0008' : {
               '0001' : { vr : "UL", vm : C.VM_SINGLE,   keyword : "LengthToEnd"},
               '0005' : { vr : "CS", vm : C.VM_1N,       keyword : "SpecificCharacterSet"},
               '0006' : { vr : "SQ", vm : C.VM_SINGLE,   keyword : "LanguageCodeSequence"},
               '0008' : { vr : "CS", vm : C.VM_2N,       keyword : "ImageType"},
+              '0010' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "RecognitionCode"},
 ...}
 
 
-var dicomVDict = {...
-"002808x4" : { vr : "US", vm : C.VM_SINGLE, keyword : "BitsForCodeWord"},
-"002808x8" : { vr : "AT", vm : C.VM_1N, keyword : "ImageDataLocation"},
-"1000xxx0" : { vr : "US", vm : C.VM_THREE, keyword : "EscapeTriplet"},
-"1000xxx1" : { vr : "US", vm : C.VM_THREE, keyword : "RunLengthTriplet"},
+let dicomPrivateDictionary = {
+  "002031xx" : { vr : "CS", vm : C.VM_1N,       keyword : "SourceImageIDs"},
+  "002804x0" : { vr : "US", vm : C.VM_SINGLE,   keyword : "RowsForNthOrderCoefficients"},
+  "002804x1" : { vr : "US", vm : C.VM_SINGLE,   keyword : "ColumnsForNthOrderCoefficients"},
+  "002804x2" : { vr : "LO", vm : C.VM_1N,       keyword : "CoefficientCoding"},
+  "002804x3" : { vr : "AT", vm : C.VM_1N,       keyword : "CoefficientCodingPointers"},
 ...}
 ```
 
@@ -155,13 +156,15 @@ var dicomVDict = {...
 
 ```js
 // our_test.js
-onsole.log(  El.dicomNDict['0008']['0006'] );
+const L = require('./abbot2Dictionary'); // L - library
 
-console.log(  El.dicomNDict['0008']['0006']['vr'] );
-console.log(  El.dicomNDict['0008']['0006'].vr    );
+console.log(  L.dicomDictionary['0008']['0006'] );
 
-console.log(  El.dicomNDict['0008']['0006']['keyword'] );
-console.log(  El.dicomNDict['0008']['0006'].keyword  );
+console.log(  L.dicomDictionary['0008']['0006']['vr'] );
+console.log(  L.dicomDictionary['0008']['0006'].vr    );
+
+console.log(  L.dicomDictionary['0008']['0006']['keyword'] );
+console.log(  L.dicomDictionary['0008']['0006'].keyword  );
 
 
 // Вывод:
@@ -177,7 +180,7 @@ console.log(  El.dicomNDict['0008']['0006'].keyword  );
 
 
 <a id="rwstream"></a>
-## RWStream.js
+## abbot3Stream.js
 Модуль позволяет создавать два типа объектов - объект поток чтения **ReadStream** и объект поток записи **WriteStream**.
 Экземпляры предназначены для работы с потоками чтения и записи данных через необработанный буфер **rawBuffer**.
 Самостоятельное использование не предполагается, но возможно.

@@ -1,8 +1,8 @@
 /* Data Dictionary, DICOM std. Vol 6.*/
 
-var C = require('./constants');
+const C = require('./abbot1Constants');
 
-var dicomNDict = {
+let dicomDictionary = {
     '0008' : {
               '0001' : { vr : "UL", vm : C.VM_SINGLE,   keyword : "LengthToEnd"},
               '0005' : { vr : "CS", vm : C.VM_1N,       keyword : "SpecificCharacterSet"},
@@ -3635,7 +3635,7 @@ var dicomNDict = {
               }
 };
 
-var dicomVDict = {
+let dicomPrivateDictionary = {
   "002031xx" : { vr : "CS", vm : C.VM_1N,       keyword : "SourceImageIDs"},
   "002804x0" : { vr : "US", vm : C.VM_SINGLE,   keyword : "RowsForNthOrderCoefficients"},
   "002804x1" : { vr : "US", vm : C.VM_SINGLE,   keyword : "ColumnsForNthOrderCoefficients"},
@@ -3736,5 +3736,5 @@ var dicomVDict = {
 //exports.dicomNDict = dicomNDict;
 //exports.dicomVDict = dicomVDict;
 //console.log(C);
-module.exports.dicomNDict = dicomNDict;
-module.exports.dicomVDict = dicomVDict;
+module.exports.dicomDictionary = dicomDictionary;
+module.exports.dicomPrivateDictionary = dicomPrivateDictionary;

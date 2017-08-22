@@ -1,4 +1,4 @@
-var C = require('./constants');
+const C = require('./abbot1Constants');
 
 function isString(type) {
   if (type == C.TYPE_ASCII || type == C.TYPE_HEX) {
@@ -56,6 +56,7 @@ module.exports.RWStream = RWStream;
 class WriteStream extends RWStream {
   constructor() {
     super();
+    this.name = 'WriteStream';
     this.defaultBufferSize = 512; //512 bytes
     this.rawBuffer = new Buffer(this.defaultBufferSize);
     this.offset = 0;
@@ -127,6 +128,7 @@ module.exports.WriteStream = WriteStream;
 class ReadStream extends RWStream {
   constructor(buffer) {
     super();
+    this.name = 'ReadStream';
     this.rawBuffer = new Buffer(buffer);
     this.offset = 0;
   }

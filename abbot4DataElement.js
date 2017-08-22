@@ -1,6 +1,6 @@
 
-const C    = require('./constants');
-const Dict = require('./dictionary');
+const C    = require('./abbot1Constants');
+const Dict = require('./abbot2Dictionary');
 
 
 function paddingLeft(paddingValue, string) {

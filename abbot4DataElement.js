@@ -12,6 +12,8 @@ function paddingLeft(paddingValue, string) {
 class DataElement {
     constructor( metod, a, b, c, d, e, f){
 
+        this.name = 'DataElement';
+
         this.isDataElement = false;
         this.discription   = null;
 
@@ -27,9 +29,17 @@ class DataElement {
 
         this.field    = null;
 
-        if( metod === 'Read' ) this.DataElementCreateByRead(a,b);
-        if( metod === 'Hand' ) this.DataElementcreateByHand(a,b,c,d,e,f);
-        else this.exit();
+        switch( metod ) {
+
+            case 'Read': this.DataElementCreateByRead(a,b); break;
+            case 'Hand': this.DataElementcreateByHand(a,b,c,d,e,f); break;
+
+            default: this.exit();
+        }
+
+        //if( metod === 'Read' ) this.DataElementCreateByRead(a,b);
+        //if( metod === 'Hand' ) this.DataElementcreateByHand(a,b,c,d,e,f);
+        //else this.exit();
 
     }
 
@@ -67,9 +77,9 @@ class DataElement {
 
             // прочитали компоненты тега элемента данных, проверяем наличие таких по словарю.
 
-            let checkGroup = (this.group in L.dicomDictionary) ? ( this.element === L.dicomDictionary[this.group]) :false;
+            let checkTag = (this.group in L.dicomDictionary) ? ( this.element in L.dicomDictionary[this.group]) :false;
 
-            if( checkGroup ) {
+            if( checkTag ) {
 
                 if (this.implicit) {
                     // рассмотрение элемента данных без VR.
@@ -81,17 +91,31 @@ class DataElement {
 
                     this.length = stream.read(C.TYPE_UINT32);
 
-                    this.field = new Buffer('');
+                    this.field = new Buffer(  stream.buffer().slice( stream.offset, stream.offset+this.length )  );
 
                 }
                 else {
                     // рассмотрение элемента данных содержащем VR.
+                    let entryDictionary = L.dicomDictionary[this.group][this.element];
+
+                    this.vr = entryDictionary.vr;
+                    this.vm = entryDictionary.vm;
+                    this.discription = entryDictionary.keyword;
+
+                    let vr = stream.read(C.TYPE_ASCII, 2);
+
+
+
+
+                    this.field = new Buffer('');
 
 
                 }
             }
 
             stream.setEndian(oldEndian);
+
+            console.log('false checkTag for DataElementCreateByRead');
 
         }
         else console.log('bad stream for DataElementCreateByRead');

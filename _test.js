@@ -8,23 +8,17 @@
 // //------------------------------------------------------------------------------
 // //Подключаем следующий модуль elements_data.js - словарь dicom, том 6
  //var El = require('./elements_data');
-const L = require('./abbot2Dictionary'); // L - library
+//const L = require('./abbot2Dictionary'); // L - library
 
-console.log(  L.dicomDictionary['0008']['0006'] );
+//console.log(  L.dicomDictionary['0008']['0006'] );
 
-console.log(  L.dicomDictionary['0008']['0006']['vr'] );
-console.log(  L.dicomDictionary['0008']['0006'].vr    );
+//console.log(  L.dicomDictionary['0008']['0006']['vr'] );
+//console.log(  L.dicomDictionary['0008']['0006'].vr    );
 
-console.log(  L.dicomDictionary['0008']['0006']['keyword'] );
-console.log(  L.dicomDictionary['0008']['0006'].keyword  );
+//console.log(  L.dicomDictionary['0008']['0006']['keyword'] );
+//console.log(  L.dicomDictionary['0008']['0006'].keyword  );
 
-//console.log(  El.dicomNDict['0008']['0006'].vr  );
 
-//console.log(  El.dicomNDict['3008']['0047']  );
-//console.log(El.dicomNDict[0x00080020]);
-//console.log(El.dicomNDict['2306']);
-//console.log(El.dicomVDict["002808x4"]);
-//
 // // //поиграем с типами данными машины и их представлении в буфере для диком
 // var RW = require('./RWStream');
 //
@@ -106,17 +100,24 @@ console.log(  L.dicomDictionary['0008']['0006'].keyword  );
 
 //Когда  будем dicom файл помещать в raw Buffer
 
-//var C = require('./constants');
-//var RW = require('./RWStream');
-//var D = require('./Data');
+const C  = require('./abbot1Constants');
+const L  = require('./abbot2Dictionary');
+const RW = require('./abbot3Stream');
+const D  = require('./abbot4DataElement');
 
-//const fs = require('fs');
+const fs = require('fs');
 
 //var DataSet = fs.readFileSync('_test_mr.dcm', 'utf8');
 
-//var DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm', 'ascii') );
+let DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm', 'ascii') );
 
-//DataSet.increment( 128 + 4 );//+254);
+DataSet.increment( 128 + 4 + 254);
+
+let elem = new D.DataElement( 'Read', DataSet, C.EXPLICIT_LITTLE_ENDIAN );
+
+
+console.log( elem );
+
 
 
 

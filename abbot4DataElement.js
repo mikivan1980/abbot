@@ -1,6 +1,6 @@
 
-const C    = require('./abbot1Constants');
-const Dict = require('./abbot2Dictionary');
+const C = require('./abbot1Constants');
+const L = require('./abbot2Dictionary');
 
 
 function paddingLeft(paddingValue, string) {
@@ -37,37 +37,64 @@ class DataElement {
 
         this.isDataElement = false;
 
-        //если syntax не задан, по умолчанию - DICOM Implicit VR Little Endian Transfer Syntax!!!
-          /*                                   */    this.syntax = C.IMPLICIT_LITTLE_ENDIAN;  this.implicit = true;  this.endian = C.LITTLE_ENDIAN;
-        if( syntax === C.EXPLICIT_LITTLE_ENDIAN )  { this.syntax = C.EXPLICIT_LITTLE_ENDIAN;  this.implicit = false; this.endian = C.LITTLE_ENDIAN; }
-        if( syntax === C.EXPLICIT_BIG_ENDIAN    )  { this.syntax = C.EXPLICIT_BIG_ENDIAN;     this.implicit = false; this.endian = C.BIG_ENDIAN; }
+        //проверяем, что первый аргумент поток чтения.
+        let checkStream = ('name' in stream) ? ( stream.name === 'ReadStream' ) : false;
+
+        if( checkStream ) {
+
+            //если syntax не задан, по умолчанию - DICOM Implicit VR Little Endian Transfer Syntax!!!
+            /*                                   */
+            this.syntax = C.IMPLICIT_LITTLE_ENDIAN;
+            this.implicit = true;
+            this.endian = C.LITTLE_ENDIAN;
+            if (syntax === C.EXPLICIT_LITTLE_ENDIAN) {
+                this.syntax = C.EXPLICIT_LITTLE_ENDIAN;
+                this.implicit = false;
+                this.endian = C.LITTLE_ENDIAN;
+            }
+            if (syntax === C.EXPLICIT_BIG_ENDIAN) {
+                this.syntax = C.EXPLICIT_BIG_ENDIAN;
+                this.implicit = false;
+                this.endian = C.BIG_ENDIAN;
+            }
 
 
-        let oldEndian = stream.endian;
-        stream.setEndian(this.endian);
+            let oldEndian = stream.endian;
+            stream.setEndian(this.endian);
 
-        this.group   =  paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16));
-        this.element =  paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16));
+            this.group = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16));
+            this.element = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16));
 
-        if(this.implicit){
-            let dictEntry = Dict.dicomNDict['group']['element'];
-            this.vr = dictEntry.vr;
-            this.vm = dictEntry.vm;
-            this.discription = dictEntry.keyword;
-            this.length = stream.read(C.TYPE_UINT32);
+            // прочитали компоненты тега элемента данных, проверяем наличие таких по словарю.
 
-            this.field = new Buffer();
+            let checkGroup = (this.group in L.dicomDictionary) ? ( this.element === L.dicomDictionary[this.group]) :false;
+
+            if( checkGroup ) {
+
+                if (this.implicit) {
+                    // рассмотрение элемента данных без VR.
+                    let entryDictionary = L.dicomDictionary[this.group][this.element];
+
+                    this.vr = entryDictionary.vr;
+                    this.vm = entryDictionary.vm;
+                    this.discription = entryDictionary.keyword;
+
+                    this.length = stream.read(C.TYPE_UINT32);
+
+                    this.field = new Buffer('');
+
+                }
+                else {
+                    // рассмотрение элемента данных содержащем VR.
+
+
+                }
+            }
+
+            stream.setEndian(oldEndian);
 
         }
-        else{
-
-
-        }
-
-
-
-
-        stream.setEndian(oldEndian);
+        else console.log('bad stream for DataElementCreateByRead');
 
        // console.log('read' + a + b );
 

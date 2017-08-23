@@ -119,6 +119,8 @@ let elem = new D.DataElement( 'Read', DataSet, C.EXPLICIT_LITTLE_ENDIAN );
 
 console.log( elem );
 
+//DataSet.increment(4);
+
 elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
 
 console.log( elem );

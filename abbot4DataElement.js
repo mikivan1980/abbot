@@ -40,10 +40,6 @@ class DataElement {
             default: this.exit();
         }
 
-        //if( metod === 'Read' ) this.DataElementCreateByRead(a,b);
-        //if( metod === 'Hand' ) this.DataElementcreateByHand(a,b,c,d,e,f);
-        //else this.exit();
-
     }
 
     DataElementCreateByRead( stream, syntax ){
@@ -84,47 +80,46 @@ class DataElement {
 
             if( checkTag ) {
 
-                if (this.implicit) {
-                    // рассмотрение элемента данных без VR.
-                    let entryDictionary = L.dicomDictionary[this.group][this.element];
+                let entryDictionary = L.dicomDictionary[this.group][this.element];
 
-                    this.vr = entryDictionary.vr;
-                    this.vm = entryDictionary.vm;
-                    this.discription = entryDictionary.keyword;
-
-                    this.length = stream.read(C.TYPE_UINT32);
-
-                    this.field = new Buffer(  stream.buffer().slice( stream.offset, stream.offset + this.length )  );
-
-                    stream.increment(this.length);
-
-                }
-                else {
-                    // рассмотрение элемента данных содержащем VR.
-                    let entryDictionary = L.dicomDictionary[this.group][this.element];
-
-                    this.vr = entryDictionary.vr;
-                    this.vm = entryDictionary.vm;
-                    this.discription = entryDictionary.keyword;
-
-                    let vr = stream.read(C.TYPE_ASCII, 2);
-
-                    //здесь можно было бы проверить совпадение прочитанного vr из потока и полученного из словаря
+                this.vr = entryDictionary.vr;
+                this.vm = entryDictionary.vm;
+                this.discription = entryDictionary.keyword;
 
 
-                    if ( vr in explicitVRList ) {
-                        stream.increment(2);
+                let checkVReqSQ = !( this.vr === 'SQ' );
+
+                if ( checkVReqSQ ) {
+                    if (this.implicit) {
+                        // рассмотрение элемента данных без VR.
                         this.length = stream.read(C.TYPE_UINT32);
-                    } else {
-                        this.length = stream.read(C.TYPE_UINT16);
+                    }
+                    else {
+                        // рассмотрение элемента данных содержащем VR.
+                        let vr = stream.read(C.TYPE_ASCII, 2);
+                        //здесь можно было бы проверить совпадение прочитанного vr из потока и полученного из словаря
+
+
+                        if (vr in explicitVRList) {
+                            stream.increment(2);
+                            this.length = stream.read(C.TYPE_UINT32);
+                        } else {
+                            this.length = stream.read(C.TYPE_UINT16);
+                        }
+
                     }
 
+                    let checkGroupLength = !( this.element === '0000' );
 
-                    this.field = new Buffer( stream.buffer().slice( stream.offset, stream.offset + this.length ) );
+                    if (checkGroupLength) {
+                        this.field = new Buffer(stream.buffer().slice(stream.offset, stream.offset + this.length));
 
-                    stream.increment(this.length);
-
+                        stream.increment(this.length);
+                    }
+                    else this.field = new Buffer();
                 }
+                else console.log('[DataElement.DataElementCreateByRead]: SQ');
+
             }
             else console.log('[DataElement.DataElementCreateByRead]: false checkTag for DataElementCreateByRead');
 
@@ -132,8 +127,6 @@ class DataElement {
 
         }
         else console.log('[DataElement.DataElementCreateByRead]: bad stream for DataElementCreateByRead');
-
-       // console.log('read' + a + b );
 
     }
 
@@ -158,7 +151,6 @@ class DataElement {
 
         this.isDataElement = false;
 
-        //console.log('hand' + a + b + c + d + e);
     }
 
     exit(){
@@ -168,17 +160,30 @@ class DataElement {
     }
 
 
+    clear(){
 
-    read( stream, syntax ){
+        this.isDataElement = false;
+        this.discription   = null;
 
-        this.DataElementCreateByRead( stream, syntax );
+        this.group    = null;
+        this.element  = null;
+        this.vr       = null;
+        this.vm       = null;
+        this.length   = null;
+
+        this.syntax   = null;
+        this.endian   = null;
+        this.implicit = null;
+
+        this.field    = null;
 
     }
 
+    read( stream, syntax ){
 
-
-
-
+        this.clear();
+        this.DataElementCreateByRead( stream, syntax );
+    }
 
 }
 

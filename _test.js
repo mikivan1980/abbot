@@ -116,8 +116,12 @@ DataSet.increment( 128 + 4 + 254);
 let elem = new D.DataElement( 'Read', DataSet, C.EXPLICIT_LITTLE_ENDIAN );
 
 
+
 console.log( elem );
 
+elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
+
+console.log( elem );
 
 
 

@@ -8,6 +8,9 @@ function paddingLeft(paddingValue, string) {
 };
 
 
+let explicitVRList  =  ["OB", "OW", "OF", "SQ", "UC", "UR", "UT", "UN"],
+    binaryVRs       =  ["FL", "FD", "SL", "SS", "UL", "US"];
+
 
 class DataElement {
     constructor( metod, a, b, c, d, e, f){
@@ -91,7 +94,9 @@ class DataElement {
 
                     this.length = stream.read(C.TYPE_UINT32);
 
-                    this.field = new Buffer(  stream.buffer().slice( stream.offset, stream.offset+this.length )  );
+                    this.field = new Buffer(  stream.buffer().slice( stream.offset, stream.offset + this.length )  );
+
+                    stream.increment(this.length);
 
                 }
                 else {
@@ -104,21 +109,29 @@ class DataElement {
 
                     let vr = stream.read(C.TYPE_ASCII, 2);
 
+                    //здесь можно было бы проверить совпадение прочитанного vr из потока и полученного из словаря
 
 
+                    if ( vr in explicitVRList ) {
+                        stream.increment(2);
+                        this.length = stream.read(C.TYPE_UINT32);
+                    } else {
+                        this.length = stream.read(C.TYPE_UINT16);
+                    }
 
-                    this.field = new Buffer('');
 
+                    this.field = new Buffer( stream.buffer().slice( stream.offset, stream.offset + this.length ) );
+
+                    stream.increment(this.length);
 
                 }
             }
+            else console.log('[DataElement.DataElementCreateByRead]: false checkTag for DataElementCreateByRead');
 
             stream.setEndian(oldEndian);
 
-            console.log('false checkTag for DataElementCreateByRead');
-
         }
-        else console.log('bad stream for DataElementCreateByRead');
+        else console.log('[DataElement.DataElementCreateByRead]: bad stream for DataElementCreateByRead');
 
        // console.log('read' + a + b );
 
@@ -151,8 +164,18 @@ class DataElement {
     exit(){
 
         this.isDataElement = false;
-        console.log('error variable metod');
+        console.log('[DataElement.exit]: error variable metod');
     }
+
+
+
+    read( stream, syntax ){
+
+        this.DataElementCreateByRead( stream, syntax );
+
+    }
+
+
 
 
 

@@ -3,6 +3,20 @@
 const C = require('./abbot1Constants');
 
 let dicomDictionary = {
+    '0002' : {
+              '0000' : { vr : "UL", vm : C.VM_SINGLE,   keyword : "FileMetaInformationGroupLength" },
+              '0001' : { vr : "OB", vm : C.VM_SINGLE,   keyword : "FileMetaInformationVersion" },
+              '0002' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "MediaStorageSOPClassUID" },
+              '0003' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "MediaStorageSOPInstanceUID" },
+              '0010' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "TransferSyntaxUID" },
+              '0012' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "ImplementationClassUID" },
+              '0013' : { vr : "SH", vm : C.VM_SINGLE,   keyword : "ImplementationVersionName" },
+              '0016' : { vr : "AE", vm : C.VM_SINGLE,   keyword : "SourceApplicationEntityTitle" },
+              '0017' : { vr : "AE", vm : C.VM_SINGLE,   keyword : "SendingApplicationEntityTitle" },
+              '0018' : { vr : "AE", vm : C.VM_SINGLE,   keyword : "ReceivingApplicationEntityTitle" },
+              '0100' : { vr : "UI", vm : C.VM_SINGLE,   keyword : "PrivateInformationCreatorUID" },
+              '0102' : { vr : "OB", vm : C.VM_SINGLE,   keyword : "PrivateInformation" }
+               },
     '0008' : {
               '0001' : { vr : "UL", vm : C.VM_SINGLE,   keyword : "LengthToEnd"},
               '0005' : { vr : "CS", vm : C.VM_1N,       keyword : "SpecificCharacterSet"},

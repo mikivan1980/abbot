@@ -8,8 +8,8 @@ function paddingLeft(paddingValue, string) {
 };
 
 
-let explicitVRList  =  ["OB", "OW", "OF", "SQ", "UC", "UR", "UT", "UN"],
-    binaryVRs       =  ["FL", "FD", "SL", "SS", "UL", "US"];
+let explicitVRList  =  { "OB":1, "OW":2, "OF":3, "SQ":4, "UC":5, "UR":6, "UT":7, "UN":8},
+    binaryVRs       =  [ "FL", "FD", "SL", "SS", "UL", "US"];
 
 
 class DataElement {
@@ -87,9 +87,9 @@ class DataElement {
                 this.discription = entryDictionary.keyword;
 
 
-                let checkVReqSQ = !( this.vr === 'SQ' );
+                //let checkVReqSQ = !( this.vr === 'SQ' );
 
-                if ( checkVReqSQ ) {
+                //if ( checkVReqSQ ) {
                     if (this.implicit) {
                         // рассмотрение элемента данных без VR.
                         this.length = stream.read(C.TYPE_UINT32);
@@ -100,7 +100,8 @@ class DataElement {
                         //здесь можно было бы проверить совпадение прочитанного vr из потока и полученного из словаря
 
 
-                        if (vr in explicitVRList) {
+
+                        if ( vr in explicitVRList ) {
                             stream.increment(2);
                             this.length = stream.read(C.TYPE_UINT32);
                         } else {
@@ -109,16 +110,16 @@ class DataElement {
 
                     }
 
-                    let checkGroupLength = !( this.element === '0000' );
+                    //let checkGroupLength = !( this.element === '0000' );
 
-                    if (checkGroupLength) {
+                    //if (checkGroupLength) {
                         this.field = new Buffer(stream.buffer().slice(stream.offset, stream.offset + this.length));
 
                         stream.increment(this.length);
-                    }
-                    else this.field = new Buffer();
-                }
-                else console.log('[DataElement.DataElementCreateByRead]: SQ');
+                    //}
+                    //else this.field = new Buffer('');
+                //}
+                //else console.log('[DataElement.DataElementCreateByRead]: find SQ');
 
             }
             else console.log('[DataElement.DataElementCreateByRead]: false checkTag for DataElementCreateByRead');

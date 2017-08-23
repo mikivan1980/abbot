@@ -111,20 +111,51 @@ const fs = require('fs');
 
 let DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm', 'ascii') );
 
-DataSet.increment( 128 + 4 + 254);
+DataSet.increment( 128 + 4);// + 254);
 
 let elem = new D.DataElement( 'Read', DataSet, C.EXPLICIT_LITTLE_ENDIAN );
 
 
+//let count = 1;
 
-console.log( elem );
+//while(DataSet.size() > DataSet.offset) {
+for(count = 1; count < 100;count++){
+
+    console.log('[' + count + ']: => ' + ( DataSet.size() - DataSet.offset) );
+    console.log(elem);
+
+    elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
+    //count++;
+}
+
 
 //DataSet.increment(4);
 
-elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
-
+/*
+console.log( DataSet.size() - DataSet.offset );
 console.log( elem );
 
+
+
+elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
+
+console.log( DataSet.size() - DataSet.offset );
+console.log( elem );
+
+
+
+elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
+
+console.log( DataSet.size() - DataSet.offset );
+console.log( elem );
+
+
+
+elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
+
+console.log( DataSet.size() - DataSet.offset );
+console.log( elem );
+*/
 
 
 //console.log(  DataSet.more(10).buffer().toString('hex') );

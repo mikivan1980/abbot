@@ -93,7 +93,8 @@
 // });
 //
 
-
+// let a = 'sdfsdf';
+// console.log(a.toUpperCase());
 
 
 //console.log('\n------/> success...');
@@ -109,53 +110,35 @@ const fs = require('fs');
 
 //var DataSet = fs.readFileSync('_test_mr.dcm', 'utf8');
 
-let DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm', 'ascii') );
 
-DataSet.increment( 128 + 4);// + 254);
+
+//let testDataSet = new Buffer( fs.readFileSync('_test_mr.dcm') );
+
+// new RW.ReadStream( fs.readFileSync('_test_mr.dcm','ascii') ); - байт 0x80 превращается в 0x00 !!!
+
+
+let DataSet = new RW.ReadStream( fs.readFileSync('_test_mr.dcm') );
+
+DataSet.increment( 128 + 4 );
 
 let elem = new D.DataElement( 'Read', DataSet, C.EXPLICIT_LITTLE_ENDIAN );
 
 
-//let count = 1;
 
-//while(DataSet.size() > DataSet.offset) {
-for(count = 1; count < 100;count++){
+let count = 1;
+
+while( (DataSet.size() > DataSet.offset)&&(elem.isDataElement) ) {
+//for(count = 1; count < 58;count++){
 
     console.log('[' + count + ']: => ' + ( DataSet.size() - DataSet.offset) );
     console.log(elem);
 
     elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
-    //count++;
+    count++;
 }
 
 
-//DataSet.increment(4);
 
-/*
-console.log( DataSet.size() - DataSet.offset );
-console.log( elem );
-
-
-
-elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
-
-console.log( DataSet.size() - DataSet.offset );
-console.log( elem );
-
-
-
-elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
-
-console.log( DataSet.size() - DataSet.offset );
-console.log( elem );
-
-
-
-elem.read( DataSet, C.EXPLICIT_LITTLE_ENDIAN );
-
-console.log( DataSet.size() - DataSet.offset );
-console.log( elem );
-*/
 
 
 //console.log(  DataSet.more(10).buffer().toString('hex') );
@@ -207,20 +190,4 @@ console.log( elem );
 console.log('\n------/> success...');
 
 
-//
-// const arr = new Uint16Array(2);
-//
-// arr[0] = 5000;
-// arr[1] = 4000;
-//
-// // Shares memory with `arr`
-// const buf = new Buffer(arr.buffer);
-//
-// // Prints: <Buffer 88 13 a0 0f>
-// //console.log(buf);
-//
-// // Changing the original Uint16Array changes the Buffer also
-// arr[1] = 6000;
-//
-// // Prints: <Buffer 88 13 70 17>
-// //console.log(buf);
+

@@ -3,9 +3,20 @@ const C = require('./abbot1Constants');
 const L = require('./abbot2Dictionary');
 
 
+
+
+function toNumber(){
+
+
+
+}
+
+
+
+
 function paddingLeft(paddingValue, string) {
     return String(paddingValue + string).slice(-paddingValue.length);
-};
+}
 
 
 let explicitVRList  =  { "OB":1, "OW":2, "OF":3, "SQ":4, "UC":5, "UR":6, "UT":7, "UN":8},
@@ -71,8 +82,8 @@ class DataElement {
             let oldEndian = stream.endian;
             stream.setEndian(this.endian);
 
-            this.group = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16));
-            this.element = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16));
+            this.group = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16)).toUpperCase();
+            this.element = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16)).toUpperCase();
 
             // прочитали компоненты тега элемента данных, проверяем наличие таких по словарю.
 
@@ -116,13 +127,15 @@ class DataElement {
                         this.field = new Buffer(stream.buffer().slice(stream.offset, stream.offset + this.length));
 
                         stream.increment(this.length);
-                    //}
+
+                        this.isDataElement = true;
+                //}
                     //else this.field = new Buffer('');
                 //}
                 //else console.log('[DataElement.DataElementCreateByRead]: find SQ');
 
             }
-            else console.log('[DataElement.DataElementCreateByRead]: false checkTag for DataElementCreateByRead');
+            else console.log('[DataElement.DataElementCreateByRead]: false checkTag  (' +  this.group + ', ' +  this.element + ')   for DataElementCreateByRead');
 
             stream.setEndian(oldEndian);
 
@@ -184,6 +197,54 @@ class DataElement {
 
         this.clear();
         this.DataElementCreateByRead( stream, syntax );
+    }
+
+
+    write( stream, syntax ){
+
+        let checkStream = ('name' in stream) ? ( stream.name === 'WriteStream' ) : false;
+
+        if( checkStream ) {
+
+            this.syntax = C.IMPLICIT_LITTLE_ENDIAN;
+            this.implicit = true;
+            this.endian = C.LITTLE_ENDIAN;
+            if (syntax === C.EXPLICIT_LITTLE_ENDIAN) {
+                this.syntax = C.EXPLICIT_LITTLE_ENDIAN;
+                this.implicit = false;
+                this.endian = C.LITTLE_ENDIAN;
+            }
+            if (syntax === C.EXPLICIT_BIG_ENDIAN) {
+                this.syntax = C.EXPLICIT_BIG_ENDIAN;
+                this.implicit = false;
+                this.endian = C.BIG_ENDIAN;
+            }
+
+
+            let oldEndian = stream.endian;
+            stream.setEndian(this.endian);
+
+            //write
+            //teg to DataSet
+            stream.write();
+
+            //vr to DataSet
+
+            //length
+
+            //thid.buffer
+
+
+            stream.setEndian(oldEndian);
+        }
+        else console.log('[DataElement.write]: bad stream for write');
+
+    }
+
+
+    check(){
+
+
     }
 
 }

@@ -48,17 +48,17 @@ The Abbot - аббат, служитель в католической церк�
 ```js
 // Пример определения мульти - констант в модуле
 var C = { ...
-TYPE_ASCII : 1,
-TYPE_HEX : 2,
-TYPE_UINT8 : 3,
-TYPE_UINT16 : 4,
-TYPE_UINT32 : 5,
+TYPE_ASCII :     1,
+TYPE_HEX :       2,
+TYPE_UINT8 :     3,
+TYPE_UINT16 :    4,
+TYPE_UINT32 :    5,
 TYPE_COMPOSITE : 6,
-TYPE_FLOAT : 7,
-TYPE_DOUBLE : 8,
-TYPE_INT8 : 9,
-TYPE_INT16 : 10,
-TYPE_INT32 : 11,
+TYPE_FLOAT :     7,
+TYPE_DOUBLE :    8,
+TYPE_INT8 :      9,
+TYPE_INT16 :     10,
+TYPE_INT32 :     11,
 ...}
 
 // Пример однотипного ветвления по значению

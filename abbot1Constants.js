@@ -1,7 +1,7 @@
 var C = {
   IMPLEM_UID : "1.2.840.0.1.3680045.8.641", // наследие от OHIF, надо разобраться с получением номера, см. стандарт:
-    // DICOM PS3.5 2017b2017c - Data Structures and Encoding, page 85, 9 Unique Identifiers (UIDs)
-    // DICOM PS3.8 2017b2017c - Network Communication Support for Message Exchange, page 59, B Abstract and Transfer Syntaxes.
+    // DICOM PS3.5 2017c - Data Structures and Encoding, page 85, 9 Unique Identifiers (UIDs)
+    // DICOM PS3.8 2017c - Network Communication Support for Message Exchange, page 59, B Abstract and Transfer Syntaxes.
 
   IMPLEM_VERSION : "abbot-v0.0.1",
 

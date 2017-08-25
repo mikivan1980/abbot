@@ -101,10 +101,10 @@
 
 //Когда  будем dicom файл помещать в raw Buffer
 
-const C  = require('./abbot1Constants');
-const L  = require('./abbot2Dictionary');
-const RW = require('./abbot3Stream');
-const D  = require('./abbot4DataElement');
+const C  = require('../abbot1Constants');
+const L  = require('../abbot2Dictionary');
+const RW = require('../abbot3Stream');
+const D  = require('../abbot4DataElement');
 
 const fs = require('fs');
 

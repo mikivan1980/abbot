@@ -5,7 +5,7 @@ const L = require('./abbot2Dictionary');
 
 
 
-function toNumber(){
+function tagNumber(){
 
 
 

@@ -47,6 +47,14 @@ const L   = require('../abbot2Dictionary');
 const RW  = require('../abbot3Stream');
 
 
+
+
+//======================================================================================================================
+function paddingLeft(paddingValue, string) {
+    return String(paddingValue + string).slice(-paddingValue.length);
+}
+
+
 //======================================================================================================================
 /* Тег элемента данных состоит из идентификатора группы и идентификатора элемента,
 * каждый тег идентифицирует единственую запись словаря данных.
@@ -55,7 +63,7 @@ const RW  = require('../abbot3Stream');
 * Функции для применения в модуле, вне модуля не видна.
 * */
 function checkTag( group, element ){
-    return ( group in L.dicomDictionary ) ? ( element in L.dicomDictionary[group] ) :false;
+    return (( group in L.dicomDictionary ) ? ( element in L.dicomDictionary[group] ) :false);
 }
 
 
@@ -63,29 +71,104 @@ function checkTag( group, element ){
 /* функция возвращает запись словаря сответствующую правильно заданным компонентам тега, иначе {}
 * Функции для применения в модуле, вне модуля не видна.
 * */
-function printTag( group, element ){
+function showTag( group, element ){ //была printTag
     if( checkTag( group, element ) ) {
         return L.dicomDictionary[group][element];}
     else { return {}; }
 }
 
 
-//======================================================================================================================
-/* Функция проверки гипотезы о существовании Data Element на потоке чтения.
- * Вход - только stream поток чтения, синтаксис определен на потоке.
- * Вывод - false когда элемент не найден stream.offset сдвигается только на один байт от исходного положения
- * true когда Data Element найден и stream.offset  сдвигается на длинну найденного Data Element
- * null когда подан неверный поток.*/
 
-function hypothesisExistenceDataElementOn( stream, flag){
+//======================================================================================================================
+//узкие контракты!!
+function checkDataElement_IMPLICIT_LITTLE_ENDIAN( stream ){
+
+
+}
+
+function checkDataElement_EXPLICIT_LITTLE_ENDIAN( stream ){
+
+
+}
+
+
+
+function checkDataElement_EXPLICIT_BIG_ENDIAN( stream ){
+
+
+};
+
+
+
+
+//======================================================================================================================
+function checkTagOnStream( stream ){
     //проверяем, что stream поток чтения, а не что-то другое.
     let checkStream = ('name' in stream) ? ( stream.name === 'ReadStream' ) : false;
 
     if( checkStream ) {
 
+        let currentStat = {
+            Endian: stream.endian,
+            Implicit: stream.implicit
+        };
 
-        stream.endian;
-        stream.implicit;
+
+        let outputCheck = {Little: {}, Big: {}};
+
+        stream.setEndian(C.LITTLE_ENDIAN);
+
+        let groupTest = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16)).toUpperCase();
+        let elementTest = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16)).toUpperCase();
+
+        outputCheck.Little.check   = checkTag(groupTest, elementTest);
+        outputCheck.Little.group   = groupTest;
+        outputCheck.Little.element = elementTest;
+
+        stream.increment(-4);
+
+        stream.setEndian(C.BIG_ENDIAN);
+
+        groupTest = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16)).toUpperCase();
+        elementTest = paddingLeft("0000", stream.read(C.TYPE_UINT16).toString(16)).toUpperCase();
+
+        outputCheck.Big.check   = checkTag(groupTest, elementTest);
+        outputCheck.Big.group   = groupTest;
+        outputCheck.Big.element = elementTest;
+
+        //console.log(outputCheck);
+
+        stream.setEndian(currentStat.Endian);
+
+        return outputCheck;
+
+    }
+    else{
+        console.log('[checkTagOnStream]: Input stream is not ReadStream. ');
+        return null;
+    }
+
+}
+
+
+//======================================================================================================================
+/* Функция проверки гипотезы о существовании Data Element на потоке чтения.
+ * Вход: только stream - поток чтения, синтаксис определен на потоке через stream.endian и stream.implicit.
+ * Вывод: false ( когда элемент не найден stream.offset сдвигается только на один байт от исходного положения),
+ *        true  ( когда Data Element найден и stream.offset сдвигается на длинну найденного Data Element),
+ *        null  ( когда подан неверный поток.)*/
+
+function hypothesisExistenceDataElementOn( stream ){
+    //проверяем, что stream поток чтения, а не что-то другое.
+    let checkStream = ('name' in stream) ? ( stream.name === 'ReadStream' ) : false;
+
+    if( checkStream ) {
+
+        let check1 = checkTagOnStream( stream );
+        console.log(check1);
+
+
+
 
 
     }
@@ -95,6 +178,19 @@ function hypothesisExistenceDataElementOn( stream, flag){
     }
 
 }
+//test
+const fs = require('fs');
+
+let DataSetIvan = new RW.ReadStream( fs.readFileSync('D://dop/node.js/abbot/_testing/dcm/_test_mr.dcm') );
+DataSetIvan.increment( 128 + 4 );
+
+for(count = 1; count < 14; count++) {
+
+    hypothesisExistenceDataElementOn( DataSetIvan );
+
+}
+console.log('end test._._.._');
+
 
 
 
@@ -283,7 +379,7 @@ function isDataSet( stream, typeSource ){
 
 
 
-const fs = require('fs');
+//const fs = require('fs');
 
 let DataSet1 = new Buffer( fs.readFileSync('D://dop/node.js/abbot/_testing/dcm/_test_mr.dcm') );
 

@@ -71,11 +71,28 @@ function printTag( group, element ){
 
 
 //======================================================================================================================
-/* Функция  */
-function hypothesisExistenceDataElementOn( stream ){
+/* Функция проверки гипотезы о существовании Data Element на потоке чтения.
+ * Вход - только stream поток чтения, синтаксис определен на потоке.
+ * Вывод - false когда элемент не найден stream.offset сдвигается только на один байт от исходного положения
+ * true когда Data Element найден и stream.offset  сдвигается на длинну найденного Data Element
+ * null когда подан неверный поток.*/
+
+function hypothesisExistenceDataElementOn( stream, flag){
+    //проверяем, что stream поток чтения, а не что-то другое.
+    let checkStream = ('name' in stream) ? ( stream.name === 'ReadStream' ) : false;
+
+    if( checkStream ) {
 
 
+        stream.endian;
+        stream.implicit;
 
+
+    }
+    else{
+        console.log('[hypothesisExistenceDataElementOn]: Input stream is not ReadStream. ');
+        return null;
+    }
 
 }
 

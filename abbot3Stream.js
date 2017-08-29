@@ -30,7 +30,10 @@ module.exports.calcLength = calcLength;
 //export
 class RWStream {
   constructor() {
-    this.endian = C.BIG_ENDIAN;
+    //когда transfer syntax не задан, по умолчанию - DICOM Implicit VR Little Endian Transfer Syntax!!!
+    //default: C.IMPLICIT_LITTLE_ENDIAN;
+    this.endian   = C.LITTLE_ENDIAN;
+    this.implicit = true;
   }
 
   setEndian(endian) {
